@@ -1,0 +1,156 @@
+/* -------------------------------------------
+PAGE HEADER
+---------------------------------------------- */
+
+.header {
+  
+  z-index: 200;
+  @include span(65);
+  @include prefix(30);
+  //position: fixed; 
+  top: 0;
+ // background: $white;
+ padding: 0;
+ padding-top: 2rem;
+}
+
+
+/*
+Header Logo Block
+---------------------------------------------- */
+.logo {
+  float: left;
+  position: fixed;
+  left: 5%;
+  top: 2rem;
+  width: 20%;
+}
+
+.logo__image {
+  width: 100%;
+  max-width: 244px;
+  height: auto;
+}
+
+
+
+/*
+Main Menu
+---------------------------------------------- */
+
+.nav {
+  list-style: none;
+}
+
+.nav-item {
+  display: inline-block;
+  float: left;
+  margin-right: 55px;
+  list-style: none;
+}
+
+.nav-item a {
+  @include allcaps;
+  color: $black;
+  line-height: 5.5rem;
+
+  &:hover {
+    color: $red;
+  }
+}
+
+.cta {
+  float: right;
+  position: relative;
+  line-height: 5.5rem;
+
+   @media screen and (max-width:1023px) {
+      width: 50%;
+      float: left;
+      position: absolute;
+      bottom: 20px;
+
+    }
+
+  .btn {
+    margin-left: 15px;
+  }
+}
+
+.home .nav {
+  position: fixed;
+  right: 4rem;
+  z-index: 9999;
+}
+
+/*
+User Button and Dropdown for logged in users
+---------------------------------------------- */
+.usr {
+  z-index: 200;
+}
+
+.usr__btn {
+  //margin-right: 0;
+  //padding-right: 0;
+  width: 100%;
+}
+
+.usr:hover {
+  .usr__menuIcon {
+    //opacity: 0;
+    @include transition(all, 0.2s, ease-in-out);
+  }
+
+  .usr__dropdown {
+    display: block;
+    opacity: 1;
+    @include transition(all, 0.2s, ease-in-out);
+  }
+}
+
+.usr__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 2px;
+}
+
+.usr__name {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.usr__menuIcon {
+  font-size: 90%;
+  @include transition(all, 0.2s, ease-in-out);
+}
+
+.usr__dropdown {
+  @include transition(all, 0.2s, ease-in-out);
+  display: none;
+  position: absolute;
+  width: 200px;
+  opacity: 0;
+  background: $white;
+  border: 1px solid $gray;
+  list-style: none;
+  padding-top: 0;
+  margin-top: -1rem;
+}
+
+.usr__dropdownItem {
+  padding: .5rem 1rem;
+  border-bottom: 1px solid $gray;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+}

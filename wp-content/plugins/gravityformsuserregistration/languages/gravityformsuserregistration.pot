@@ -1,0 +1,727 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Gravity Forms User Registration\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-13 12:28+0100\n"
+"PO-Revision-Date: 2014-11-13 12:28+0100\n"
+"Last-Translator: Samuel Aguilera <correo@samuelaguilera.com>\n"
+"Language-Team: Rocketgenius <customerservice@rocketgenius.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../includes/activate.php:37
+msgid "Activation Key Required"
+msgstr ""
+
+#: ../includes/activate.php:40
+msgid "Activation Key:"
+msgstr ""
+
+#: ../includes/activate.php:56 ../includes/activate.php:76
+msgid "Your account is now active!"
+msgstr ""
+
+#: ../includes/activate.php:60
+#, php-format
+msgid ""
+"Your account has been activated. You may now <a href=\"%1$s\">log in</a> to "
+"the site using your chosen username of &#8220;%2$s&#8221;. Please check your "
+"email inbox at %3$s for your password and login instructions. If you do not "
+"receive an email, please check your junk or spam folder. If you still do not "
+"receive an email within an hour, you can <a href=\"%4$s\">reset your "
+"password</a>."
+msgstr ""
+
+#: ../includes/activate.php:62
+#, php-format
+msgid ""
+"Your site at <a href=\"%1$s\">%2$s</a> is active. You may now log in to your "
+"site using your chosen username of &#8220;%3$s&#8221;. Please check your "
+"email inbox at %4$s for your password and login instructions. If you do not "
+"receive an email, please check your junk or spam folder. If you still do not "
+"receive an email within an hour, you can <a href=\"%5$s\">reset your "
+"password</a>."
+msgstr ""
+
+#: ../includes/activate.php:67
+msgid "An error occurred during the activation"
+msgstr ""
+
+#: ../includes/activate.php:79
+msgid "Username:"
+msgstr ""
+
+#: ../includes/activate.php:80
+msgid "Password:"
+msgstr ""
+
+#: ../includes/activate.php:84
+#, php-format
+msgid ""
+"Your account is now activated. <a href=\"%1$s\">View your site</a> or <a "
+"href=\"%2$s\">Log in</a>"
+msgstr ""
+
+#: ../includes/activate.php:86
+#, php-format
+msgid ""
+"Your account is now activated. <a href=\"%1$s\">Log in</a> or go back to the "
+"<a href=\"%2$s\">homepage</a>."
+msgstr ""
+
+#: ../includes/pending_activations.php:26 ../userregistration.php:436
+#: ../userregistration.php:1552
+msgid "Pending Activations"
+msgstr ""
+
+#: ../includes/pending_activations.php:29
+#, php-format
+msgid "Pending Activations for %s"
+msgstr ""
+
+#: ../includes/pending_activations.php:40
+msgid "Select a Form"
+msgstr ""
+
+#: ../includes/pending_activations.php:41
+msgid "View All Pending Activations"
+msgstr ""
+
+#: ../includes/pending_activations.php:42
+msgid "Forms"
+msgstr ""
+
+#: ../includes/pending_activations.php:290
+msgid "Activate this sign up? "
+msgstr ""
+
+#: ../includes/pending_activations.php:290
+msgid "\\'Cancel\\' to stop, \\'OK\\' to activate."
+msgstr ""
+
+#: ../includes/pending_activations.php:296
+msgid "Delete this sign up? "
+msgstr ""
+
+#: ../includes/pending_activations.php:296 ../userregistration.php:395
+#: ../userregistration.php:440
+msgid "\\'Cancel\\' to stop, \\'OK\\' to delete."
+msgstr ""
+
+#: ../includes/pending_activations.php:309
+msgid "Activate"
+msgstr ""
+
+#: ../includes/pending_activations.php:310 ../userregistration.php:392
+#: ../userregistration.php:440 ../userregistration.php:2961
+msgid "Delete"
+msgstr ""
+
+#: ../includes/signups.php:193
+msgid "That username is already activated."
+msgstr ""
+
+#: ../includes/signups.php:197 ../userregistration.php:2654
+msgid "Sorry, that email address is already used!"
+msgstr ""
+
+#: ../includes/signups.php:209
+msgid "Could not create user"
+msgstr ""
+
+#: ../includes/signups.php:265
+msgid "Invalid activation key."
+msgstr ""
+
+#: ../includes/signups.php:268
+msgid "The user is already active."
+msgstr ""
+
+#: ../plugin-upgrade.php:50 ../userregistration.php:230
+#, php-format
+msgid "View version %s Details"
+msgstr ""
+
+#: ../plugin-upgrade.php:69
+#, php-format
+msgid "Oops!! Something went wrong.%sPlease try again or %scontact us%s."
+msgstr ""
+
+#: ../userregistration.php:223
+msgid "Gravity Forms "
+msgstr ""
+
+#: ../userregistration.php:230
+msgid ""
+"There is a new version of Gravity Forms User Registration Add-On available."
+msgstr ""
+
+#: ../userregistration.php:231
+#, php-format
+msgid ""
+"%sRegister%s your copy of Gravity Forms to receive access to automatic "
+"upgrades and support. Need a license key? %sPurchase one now%s."
+msgstr ""
+
+#: ../userregistration.php:273 ../userregistration.php:316
+#: ../userregistration.php:2922
+msgid "User Registration"
+msgstr ""
+
+#: ../userregistration.php:302 ../userregistration.php:791
+msgid "Gravity Form"
+msgstr ""
+
+#: ../userregistration.php:302
+msgid ""
+"Select the Gravity Form you would like to use to register users for your "
+"WordPress website."
+msgstr ""
+
+#: ../userregistration.php:303 ../userregistration.php:405
+#: ../userregistration.php:414 ../userregistration.php:777
+msgid "Action"
+msgstr ""
+
+#: ../userregistration.php:303
+msgid ""
+"Select the type of feed you would like to create. \"Create\" feeds will "
+"create a new user. \"Update\" feeds will update users."
+msgstr ""
+
+#: ../userregistration.php:304 ../userregistration.php:811
+msgid "Username"
+msgstr ""
+
+#: ../userregistration.php:304
+msgid "Select the form field that should be used for the user's username."
+msgstr ""
+
+#: ../userregistration.php:305 ../userregistration.php:816
+msgid "First Name"
+msgstr ""
+
+#: ../userregistration.php:305
+msgid "Select the form field that should be used for the user's first name."
+msgstr ""
+
+#: ../userregistration.php:306 ../userregistration.php:821
+msgid "Last Name"
+msgstr ""
+
+#: ../userregistration.php:306
+msgid "Select the form field that should be used for the user's last name."
+msgstr ""
+
+#: ../userregistration.php:307 ../userregistration.php:827
+msgid "Display Name"
+msgstr ""
+
+#: ../userregistration.php:307
+msgid "Select how the user's name should be displayed publicly."
+msgstr ""
+
+#: ../userregistration.php:308 ../userregistration.php:849
+msgid "Email Address"
+msgstr ""
+
+#: ../userregistration.php:308
+msgid "Select the form field that should be used for the user's email address."
+msgstr ""
+
+#: ../userregistration.php:309 ../userregistration.php:854
+msgid "Password"
+msgstr ""
+
+#: ../userregistration.php:309
+msgid "Select the form field that should be used for the user's password."
+msgstr ""
+
+#: ../userregistration.php:310 ../userregistration.php:860
+msgid "Role"
+msgstr ""
+
+#: ../userregistration.php:310
+msgid "Select the role the user should be assigned."
+msgstr ""
+
+#: ../userregistration.php:311 ../userregistration.php:887
+msgid "Send Email?"
+msgstr ""
+
+#: ../userregistration.php:311
+msgid ""
+"Specify whether to send the password to the new user by email. <em class="
+"\"enabled-by-default\">Enabled by default.</em>"
+msgstr ""
+
+#: ../userregistration.php:312 ../userregistration.php:893
+msgid "Set As Post Author"
+msgstr ""
+
+#: ../userregistration.php:312
+msgid ""
+"When a form submission creates a post and registers a user, set the new user "
+"as the post author. <em class=\"enabled-by-default\">Enabled by default.</em>"
+msgstr ""
+
+#: ../userregistration.php:313 ../userregistration.php:903
+msgid "User Activation"
+msgstr ""
+
+#: ../userregistration.php:313
+msgid ""
+"Send users an email with an activation link. Users are only registered once "
+"they have activated their accounts."
+msgstr ""
+
+#: ../userregistration.php:314
+msgid "User Activation Type"
+msgstr ""
+
+#: ../userregistration.php:314
+msgid ""
+"<strong>By Email:</strong> Send the user an email with an activation link."
+"<br /><strong>Manually:</strong> Activate each user manually from the <a "
+"href=\"admin.php?page=gf_user_registration&view=pending_activations"
+"\">Pending Activations</a> page."
+msgstr ""
+
+#: ../userregistration.php:315 ../userregistration.php:928
+msgid "Registration Condition"
+msgstr ""
+
+#: ../userregistration.php:315
+msgid ""
+"When the registration condition is enabled, form submissions will only "
+"register the user when the condition is met. When disabled the user will not "
+"be registered."
+msgstr ""
+
+#: ../userregistration.php:316
+msgid ""
+"The selected form also has a User Registration feed. These options allow you "
+"to specify how you would like the PayPal and User Registration Add-ons to "
+"work together."
+msgstr ""
+
+#: ../userregistration.php:317 ../userregistration.php:1902
+msgid "Create Site"
+msgstr ""
+
+#: ../userregistration.php:317
+msgid ""
+"When WordPress Multisite is enabled, checking this option will enable the "
+"creation of a new site on the network when a new user registers."
+msgstr ""
+
+#: ../userregistration.php:318 ../userregistration.php:1910
+msgid "Site Address"
+msgstr ""
+
+#: ../userregistration.php:318
+msgid "Select the form field that should be used for the site address."
+msgstr ""
+
+#: ../userregistration.php:319 ../userregistration.php:1915
+msgid "Site Title"
+msgstr ""
+
+#: ../userregistration.php:319
+msgid "Select the form field that should be used for the site title."
+msgstr ""
+
+#: ../userregistration.php:320 ../userregistration.php:1921
+msgid "Site Role"
+msgstr ""
+
+#: ../userregistration.php:320
+msgid "Select role the user should be assigned on the newly created site."
+msgstr ""
+
+#: ../userregistration.php:321 ../userregistration.php:1932
+msgid "Current Site Role"
+msgstr ""
+
+#: ../userregistration.php:321
+msgid ""
+"Select role the user should be assigned on the site they registered from. "
+"This option overrides the \"Role\" option under User Settings."
+msgstr ""
+
+#: ../userregistration.php:346
+#, php-format
+msgid ""
+"User Registration Add-On requires Gravity Forms %s. Upgrade automatically on "
+"the %sPlugin page%s."
+msgstr ""
+
+#: ../userregistration.php:358
+msgid "Feed deleted."
+msgstr ""
+
+#: ../userregistration.php:369
+msgid "Feeds deleted."
+msgstr ""
+
+#: ../userregistration.php:378
+msgid "User Registration Forms"
+msgstr ""
+
+#: ../userregistration.php:389 ../userregistration.php:391
+msgid "Bulk action"
+msgstr ""
+
+#: ../userregistration.php:395
+msgid "Apply"
+msgstr ""
+
+#: ../userregistration.php:395
+msgid "Delete selected feeds? "
+msgstr ""
+
+#: ../userregistration.php:404 ../userregistration.php:413
+msgid "Form"
+msgstr ""
+
+#: ../userregistration.php:427 ../userregistration.php:484
+msgid "Active"
+msgstr ""
+
+#: ../userregistration.php:427 ../userregistration.php:480
+msgid "Inactive"
+msgstr ""
+
+#: ../userregistration.php:429 ../userregistration.php:432
+msgid "Edit"
+msgstr ""
+
+#: ../userregistration.php:440
+msgid "Delete this feed? "
+msgstr ""
+
+#: ../userregistration.php:447 ../userregistration.php:964
+msgid "Update"
+msgstr ""
+
+#: ../userregistration.php:447
+msgid "Create"
+msgstr ""
+
+#: ../userregistration.php:458
+#, php-format
+msgid ""
+"You don't have any User Registration feeds configured. Let's go %screate one"
+"%s!"
+msgstr ""
+
+#: ../userregistration.php:495
+msgid "Ajax error while updating feed"
+msgstr ""
+
+#: ../userregistration.php:516
+#, php-format
+msgid ""
+"Gravity Forms User Registration Add-On has been successfully uninstalled. It "
+"can be re-activated from the %splugins page%s."
+msgstr ""
+
+#: ../userregistration.php:537 ../userregistration.php:646
+msgid "User Registration Settings"
+msgstr ""
+
+#: ../userregistration.php:541
+msgid "Custom Registration Page"
+msgstr ""
+
+#: ../userregistration.php:544
+msgid "Enable Custom Registration Page"
+msgstr ""
+
+#: ../userregistration.php:563
+msgid "Save Settings"
+msgstr ""
+
+#: ../userregistration.php:571
+msgid "Uninstall User Registration Add-On"
+msgstr ""
+
+#: ../userregistration.php:575
+msgid "Warning! This operation deletes ALL user registration feeds."
+msgstr ""
+
+#: ../userregistration.php:575
+msgid ""
+"If you continue, you will not be able to recover any User Registration data."
+msgstr ""
+
+#: ../userregistration.php:578
+msgid ""
+"Warning! ALL settings will be deleted. This cannot be undone. \\'OK\\' to "
+"delete, \\'Cancel\\' to stop"
+msgstr ""
+
+#: ../userregistration.php:716
+msgid "You must map the \"Email Address\" setting to a field."
+msgstr ""
+
+#: ../userregistration.php:719
+msgid "You must map the \"Username\" setting to a field."
+msgstr ""
+
+#: ../userregistration.php:729
+#, php-format
+msgid "Feed Updated. %sback to list%s"
+msgstr ""
+
+#: ../userregistration.php:753 ../userregistration.php:1100
+msgid "Preserve current password"
+msgstr ""
+
+#: ../userregistration.php:753 ../userregistration.php:1100
+msgid "Auto Generate Password"
+msgstr ""
+
+#: ../userregistration.php:761
+msgid "Oops! There were some issues with your feed."
+msgstr ""
+
+#: ../userregistration.php:779
+msgid "Select an Action"
+msgstr ""
+
+#: ../userregistration.php:811 ../userregistration.php:849
+#: ../userregistration.php:1910 ../userregistration.php:1915
+#: ../userregistration.php:1922 ../userregistration.php:1933
+msgid "required"
+msgstr ""
+
+#: ../userregistration.php:889
+msgid "Send this password to the new user by email."
+msgstr ""
+
+#: ../userregistration.php:895 ../userregistration.php:932
+msgid "Enable"
+msgstr ""
+
+#: ../userregistration.php:908
+msgid "Enable user activation."
+msgstr ""
+
+#: ../userregistration.php:909
+msgid "Enable user activation"
+msgstr ""
+
+#: ../userregistration.php:937
+msgid "Register the user if "
+msgstr ""
+
+#: ../userregistration.php:941
+msgid "is"
+msgstr ""
+
+#: ../userregistration.php:942
+msgid "is not"
+msgstr ""
+
+#: ../userregistration.php:943
+msgid "greater than"
+msgstr ""
+
+#: ../userregistration.php:944
+msgid "less than"
+msgstr ""
+
+#: ../userregistration.php:945
+msgid "contains"
+msgstr ""
+
+#: ../userregistration.php:946
+msgid "starts with"
+msgstr ""
+
+#: ../userregistration.php:947
+msgid "ends with"
+msgstr ""
+
+#: ../userregistration.php:953
+msgid ""
+"To create a registration condition, your form must have a field supported by "
+"conditional logic."
+msgstr ""
+
+#: ../userregistration.php:964
+msgid "Save"
+msgstr ""
+
+#: ../userregistration.php:965
+msgid "Cancel"
+msgstr ""
+
+#: ../userregistration.php:1035
+msgid "There was an error getting the available forms"
+msgstr ""
+
+#: ../userregistration.php:1080
+msgid ""
+"This form does not have any <strong>Email</strong> fields. Please add an "
+"Email field and try again."
+msgstr ""
+
+#: ../userregistration.php:1114 ../userregistration.php:3375
+msgid "&mdash; Preserve current role &mdash;"
+msgstr ""
+
+#: ../userregistration.php:1183 ../userregistration.php:1707
+msgid "add another rule"
+msgstr ""
+
+#: ../userregistration.php:1185 ../userregistration.php:1709
+msgid "remove this rule"
+msgstr ""
+
+#: ../userregistration.php:1244
+msgid "Enter Meta Name"
+msgstr ""
+
+#: ../userregistration.php:1462
+msgid "Enter value"
+msgstr ""
+
+#: ../userregistration.php:1549
+msgid "User Registration Feeds"
+msgstr ""
+
+#: ../userregistration.php:1550
+msgid "Add New"
+msgstr ""
+
+#: ../userregistration.php:1554
+msgid "Edit Feed"
+msgstr ""
+
+#: ../userregistration.php:1554
+msgid "New Feed"
+msgstr ""
+
+#: ../userregistration.php:1639
+msgid "BuddyPress Profile"
+msgstr ""
+
+#: ../userregistration.php:1899
+msgid "Network Options"
+msgstr ""
+
+#: ../userregistration.php:1904
+msgid "Create new site when a user registers."
+msgstr ""
+
+#: ../userregistration.php:2629
+msgid "Passwords may not contain the character \"\\\""
+msgstr ""
+
+#: ../userregistration.php:2658
+msgid ""
+"That email address has already been used. Please check your inbox for an "
+"activation email. It will become available in a couple of days if you do "
+"nothing."
+msgstr ""
+
+#: ../userregistration.php:2699 ../userregistration.php:2701
+msgid "This email address is already registered"
+msgstr ""
+
+#: ../userregistration.php:2705
+msgid "The email address can not be empty"
+msgstr ""
+
+#: ../userregistration.php:2713
+msgid "This username is already registered"
+msgstr ""
+
+#: ../userregistration.php:2716
+msgid ""
+"The username can only contain alphanumeric characters (A-Z, 0-9), "
+"underscores, dashes and spaces"
+msgstr ""
+
+#: ../userregistration.php:2719
+msgid ""
+"The username can only contain alphanumeric characters (A-Z, 0-9), "
+"underscores and dashes"
+msgstr ""
+
+#: ../userregistration.php:2722
+msgid "The username can not be empty"
+msgstr ""
+
+#: ../userregistration.php:2933
+msgid "Register user only when a payment is received."
+msgstr ""
+
+#: ../userregistration.php:2935
+msgid "Register user and create site only when a payment is received."
+msgstr ""
+
+#: ../userregistration.php:2943
+msgid "Update <strong>user</strong> when subscription is cancelled."
+msgstr ""
+
+#: ../userregistration.php:2949
+#, php-format
+msgid "Set User as %s"
+msgstr ""
+
+#: ../userregistration.php:2958
+msgid "Update <strong>site</strong> when subscription is cancelled."
+msgstr ""
+
+#: ../userregistration.php:2961
+msgid "Deactivate"
+msgstr ""
+
+#: ../userregistration.php:2963
+#, php-format
+msgid "%s site"
+msgstr ""
+
+#: ../userregistration.php:3110
+msgid ""
+"You don't have adequate permission to uninstall the User Registration Add-On."
+msgstr ""
+
+#: ../userregistration.php:3161 ../userregistration.php:3221
+msgid "Full"
+msgstr ""
+
+#: ../userregistration.php:3382
+msgid "&mdash; No role for this site &mdash;"
+msgstr ""
+
+#: ../userregistration.php:3722
+msgid "Oops! You need to be logged in to use this form."
+msgstr ""
+
+#: ../userregistration.php:3761
+msgid "Select a form"
+msgstr ""
+
+#: ../userregistration.php:3800
+msgid "Pending Activation:"
+msgstr ""
+
+#: ../userregistration.php:3808
+msgid "Are you sure you want to activate this user?"
+msgstr ""
+
+#: ../userregistration.php:3828
+msgid "User Activated Successfully"
+msgstr ""

@@ -1,0 +1,171 @@
+/* ==========================================================================================
+A SUPER FLEXIBLE GRID
+============================================================================================= 
+How to use:
+1.  Edit variables to match design
+2.  Add the grid-container mixin to parent element(s)
+3.  Start adding the span(n) mixin to your individual grid elements
+4.  Add the span(n) mixin to your media queries for a responsive grid flow
+5.  Be happy with your clean semantic HTML!!!
+*/
+
+
+/* -----------------------------------------------------------------
+VARIABLES - EDIT THESE
+-------------------------------------------------------------------- */
+
+/* Number of Columns
+–––––––––––––––––––– */
+$number_of_columns: 100; /* How many columns does your design have?
+                            This will determine how 
+
+/* Maximum Grid Width
+––––––––––––––––––––– */
+$max_width: 93%; /* total available width of row 
+                      contents. (include units) */
+
+/* Grid Spacing (gutter)
+–––––––––––––––––––––––– */
+$spacing_unit: rem;     /* Unit for the spacing variables below, 
+                           options are: em, rem, px, or pt */ 
+$horizontal_spacing: 2; /* Horizontal gutter 
+                           (how much space between grid items) - do not include units */
+$vertical_spacing: 2;  /* Vertical gutter
+                           how much space above/below grid items) - do not include units */
+
+
+/* -----------------------------------------------------------------
+MIXINS - DO NOT EDIT THESE, BUT USE THEM (PLEASE READ THROUGH)
+-------------------------------------------------------------------- 
+
+Table of Contents
+-----------------
+1. Grid Padding
+2. Grid Container 
+3. Grid Nested
+4. Grid Span
+5. Grid Prefix
+6. Grid Suffix
+*/
+
+      
+/* Grid Padding
+––––––––––––––––––––––––––––––––––––––––––––––––––
+This Mixin is used inside our other mixins to 
+establish gutters (vertical + horizontal).
+You can use it on anything that needs the grid 
+gutter applied.  */
+$unit_base: (
+    rem: 1rem,
+    em: 1em,
+    px: 1px,
+    pt: 1pt
+);
+
+@mixin grid-padding {
+  padding-left: ($horizontal_spacing / 2) * map-get($unit_base, $spacing_unit); 
+  padding-right: ($horizontal_spacing / 2) * map-get($unit_base, $spacing_unit); 
+  padding-top: ($vertical_spacing / 2) * map-get($unit_base, $spacing-unit); 
+  padding-bottom: ($vertical_spacing / 2) * map-get($unit_base, $spacing-unit); 
+}
+
+
+/* Grid Container
+–––––––––––––––––––––––––––––––––––––––––––––––––– 
+Apply this mixin to any "row" or outer wrapper of 
+grid items.  Its children are grid items */
+@mixin grid-container { // 
+  @include grid-padding;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $max_width;
+  
+  // make children self-clear
+  &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+  
+  & > * { // apply grid padding to the immediate children
+      
+  } 
+}
+
+
+/* Grid Nested
+–––––––––––––––––––––––––––––––––––––––––––––––––– 
+Zero out all padding so that the nested grid elements will
+form the gutter, not the wrapper itself. */
+@mixin grid-nested {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+
+/* Grid Span
+–––––––––––––––––––––––––––––––––––––––––––––––––– 
+Use this mixin to apply the grid to an element (div, section, etc).
+This grid is based on percentages of 100.  eg --
+  span(25) is a quarter, or 25%
+  span(33) is a third, or 33.333%
+  and so on.
+*/
+@mixin span($n: 1) {
+  @include grid-padding;
+  float: left;
+  @if $n == 33 {
+    width: percentage(1/3);
+  } @else if $n == 66 {
+    width: percentage((2/3)*2);
+  } @else {
+    width: percentage($n/100);
+  }
+}
+
+
+/* Grid Prefix
+––––––––––––––––––––––––––––––––––––––––––––––––––  
+Add space before an element or "push it to the left"
+by an amount equaling n% of the grid
+sample usage: @include prefix(25)
+sample result:  gives a margin-left of 25%
+ */
+@mixin prefix($n: 1) {
+  @if $n == 33 {
+    margin-left: percentage(1/3);
+  } @else if $n == 66 {
+    margin-left: percentage((2/3)*2);
+  } @else {
+    margin-left: percentage($n/100);
+  }
+}
+
+
+/* Grid Suffix
+–––––––––––––––––––––––––––––––––––––––––––––––––– 
+Add space after an element equaling n% of the grid
+sample usage: @include append(25)
+sample result:  gives a margin-right of 25% */
+@mixin suffix($n: 1) {
+  @if $n == 33 {
+    margin-right: percentage(1/3);
+  } @else if $n == 66 {
+    margin-right: percentage((2/3)*2);
+  } @else {
+    margin-right: percentage($n/100);
+  }
+}
+
+
+/* 
+Box Model 
+–––––––––––––––––––––––––––––––––––––––––––––––––– 
+Set Box Model to 'border-box' just in case its not set elsewhere */
+* , *:before, *:after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}

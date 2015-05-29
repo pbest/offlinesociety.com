@@ -1,0 +1,100 @@
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.btn,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  @include transition(all, 0.2s, ease-in-out);
+  @include type__default;
+  display: inline-block;
+  //height: 38px;
+  padding: 5px 35px;
+  color: $black;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: map-get($bodytype, bold);
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 0;
+  border: 2px solid $gray;
+  cursor: pointer;
+  box-sizing: border-box; 
+
+}
+
+
+.btn:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.btn:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  @include transition(all, 0.2s, ease-in-out);
+  color: $red;
+  border-color: $red;
+  outline: 0; 
+}
+
+.btn.btn-primary,
+button.btn-primary,
+input[type="submit"].btn-primary,
+input[type="reset"].btn-primary,
+input[type="button"].btn-primary {
+  color: $white;
+  background-color: $red;
+  border-color: $red;
+}
+
+.btn.btn-primary:hover,
+button.btn-primary:hover,
+input[type="submit"].btn-primary:hover,
+input[type="reset"].btn-primary:hover,
+input[type="button"].btn-primary:hover,
+.btn.btn-primary:focus,
+button.btn-primary:focus,
+input[type="submit"].btn-primary:focus,
+input[type="reset"].btn-primary:focus,
+input[type="button"].btn-primary:focus {
+  color: $white;
+  background-color: $red-1;
+  border-color: $red-1; 
+}
+
+.btn.btn-transparent {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.btn.btn-secondary,
+button.btn-secondary,
+input[type="submit"].btn-secondary,
+input[type="reset"].btn-secondary,
+input[type="button"].btn-secondary {
+  color: $black;
+  background-color: transparent;
+  border-color: $gray;
+}
+
+.btn.btn-secondary:hover,
+button.btn-secondary:hover,
+input[type="submit"].btn-secondary:hover,
+input[type="reset"].btn-secondary:hover,
+input[type="button"].btn-secondary:hover,
+.btn.btn-secondary:focus,
+button.btn-secondary:focus,
+input[type="submit"].btn-secondary:focus,
+input[type="reset"].btn-secondary:focus,
+input[type="button"].btn-secondary:focus {
+  color: $red;
+  background-color: transparent;
+  border-color: $red;
+}

@@ -1,0 +1,103 @@
+{% block html_head_container %}
+ {% include 'html-header.twig' %}
+ 	 {% block head %}
+	 {% endblock %}
+  </head>
+{% endblock %}
+
+	<body class="{{body_class}}" data-template="base.twig">
+	 <!--[if lt IE 9]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <div class="page-wrapper">
+
+    <!-- Site Header
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    {% block header %}
+		<header class="header">
+				
+				 <div class="logo">
+						<a class="logo__link" href="{{site.url}}" rel="home">
+							<img class="logo__image" src="{{site.theme.link}}/img/logo.png">
+						</a>
+					</div>
+					
+
+					<nav id="nav-main" class="nav-main" role="navigation">
+
+						<!-- Main Menu
+    				–––––––––––––––––––––––––––––––––––––––––––––––––– -->	
+						<ul class="nav">
+						{% for item in menu.get_items %}
+							<li class="nav-item {{item.classes | join(' ')}}">
+								<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
+								{% if item.get_children %}
+									<ul class="nav nav-drop">
+									{% for child in item.get_children %}
+										<li class="nav-drop-item">
+											<a class="nav-link" href="{{child.get_link}}">{{child.title}}</a>
+										</li>
+									{% endfor %}
+									</ul>
+								{% endif %}
+							</li>
+						{% endfor %}
+
+						<!-- Right-side Menu (CTA)
+    				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    				{% block cta %} 
+              {% if user %}
+								<li class="cta usr">
+								  <a class="usr__btn btn btn-transparent" href="#">
+										<img class="usr__avatar" src="{{avatar.img_url}}">
+										<span class="usr__name">{{user.name}}</span>
+										<i class="usr__menuIcon ss-icon ss-navigatedown red"></i>
+							  	</a>
+
+							  	<ul class="usr__dropdown">
+							  	  <li class="usr__dropdownItem"><a href="#">My Events</a>
+							  		<li class="usr__dropdownItem"><a href="#">Edit Profile</a>
+							  		<li class="usr__dropdownItem"><a href="#">Account</a>
+							  		<li class="usr__dropdownItem"><a href="{{logout_url}}">Logout</a>
+							  	</ul>
+								</li>
+								{% if user.wp_user_level != "0" %}
+              		<li class="cta"><a class="btn btn-primary" href="{{site.url}}/join/">Join US</a></li>
+              	{% endif %}
+							{% else %}
+								<li class="cta"><a class="btn btn-primary" href="{{site.url}}/join/">Join US</a></li>
+								<li class="cta"><a class="btn btn-secondary" href="{{site.url}}/login/">Sign In</a></li>
+							{% endif %}
+						{% endblock %}	
+
+						</ul>
+					</nav><!-- #nav -->
+				
+		</header>
+	 {% endblock %}
+
+		<!-- Page Content
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    {% block content %}
+		<section class="content wrapper" role="main">
+        {#  content block will be replaced #} 			
+					Sorry, no content
+		</section>
+    {% endblock %}
+
+		  <!-- Footer
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	  	{% block footer %}
+				<footer class="footer">
+				 <div class="wrapper">
+					{% include 'footer.twig' %}
+					</div>
+				</footer>
+			  {{ function('wp_footer') }}
+		  {% endblock %}
+
+		</div> <!-- // .page-wrapper-->
+		<script src="{{site.theme.link}}/js/app.min.js"></script>
+
+	</body>
+</html>

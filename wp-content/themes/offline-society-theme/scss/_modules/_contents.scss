@@ -1,0 +1,18 @@
+.wrapper {
+  @include grid-container;
+}
+
+.content-wrapper {
+  @include prefix(30);
+  padding-top: 10rem;
+
+  @media screen and (max-width:1023px) {
+    @include prefix(17);
+  }
+}
+
+.article-h1 {
+  margin-left: 5%;
+  padding-right: 5%;
+}
+

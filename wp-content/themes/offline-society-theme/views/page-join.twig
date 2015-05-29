@@ -1,0 +1,33 @@
+{% extends "base.twig" %}
+
+
+
+{% block content %}
+	{% if user %}
+	{# User is logged in #} 
+	  {% if user_role == "member" %}
+	  	 {# User is a member #}
+	  	 <div class="content-wrapper">
+			 <h1>You're a member!</h1>
+			 </div>
+	  {% else %} 
+	      {# User is not a member, show them the application #}
+				<div class="content-wrapper">
+				<h1>Membership Application</h1>
+				{{ displaygform(4) }}
+				</div>
+    {% endif %}
+{% else %}  
+{# User is not logged in, so show them the registration form#}
+	<div class="content-wrapper">
+		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+			<section class="article-content">
+				<h1 class="article-h1">{{join_title}}</h1>
+				<div class="article-body">
+					{{ displaygform(1) }}
+				</div>
+			</section>
+		</article>
+	</div><!-- /content-wrapper -->
+{% endif %}
+{% endblock %}

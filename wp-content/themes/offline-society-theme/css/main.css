@@ -1,0 +1,1337 @@
+@charset "UTF-8";
+/*------------------------------------*    #MAIN SASS FILE
+\*------------------------------------*/
+/*
+    This serves as your tables of contents
+    Do not place styles directly in here,
+    force yourself to keep them organized
+    in parts.
+
+
+
+    Read here for more info:
+    http://css-tricks.com/sass-style-guide/
+*/
+/* =================================================================
+                             Spacing & Responsive Rhythm 
+==================================================================== */
+/* 
+      1a) Variables
+      –––––––––––––––––––––––––––––––––––––––––––––––––– 
+      // Add typefaces here.
+      // Add weight and style details too.
+      // ! Set cap height to set to the baseline.
+      -------------------------------------------------- */
+/* =================================================================
+                              VENDOR PREFIXING
+==================================================================== */
+/* 
+
+SAMPLE USAGE: 
+------------------------------------------------------------------
+.element {
+  @include prefix((transform: translate(-50%, -50%)), webkit ms);
+}
+ 
+.other-element {
+  @include prefix((
+    column-count: 3,
+    column-gap: 1em,
+    column-rule: 1px solid silver,
+    column-width: 20em
+  )), webkit moz);
+}
+
+SAMPLE CSS OUTPUT:
+------------------------------------------------------------------
+
+.element {
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+ 
+.other-element {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  -webkit-column-gap: 1em;
+  -moz-column-gap: 1em;
+  column-gap: 1em;
+  -webkit-column-rule: 1px solid silver;
+  -moz-column-rule: 1px solid silver;
+  column-rule: 1px solid silver;
+  -webkit-column-width: 20em;
+  -moz-column-width: 20em;
+  column-width: 20em;
+}
+*/
+/* 
+These are shortcut mixins built on top of the core prefix mixin for 
+quick usage in other files
+
+SAMPLE USAGE:
+------------------------------------------------------------------
+
+.element {
+  @include transform(rotate(42deg));
+}
+
+
+SAMPLE CSS OUTPUT:
+------------------------------------------------------------------
+
+.element {
+  -webkit-transform: rotate(42deg);
+  -ms-transform: rotate(42deg);
+  transform: rotate(42deg);
+}
+*/
+.pull-right {
+  float: right; }
+
+/* Colors
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.red {
+  color: #EB4147; }
+
+/* ==========================================================================================
+A SUPER FLEXIBLE GRID
+============================================================================================= 
+How to use:
+1.  Edit variables to match design
+2.  Add the grid-container mixin to parent element(s)
+3.  Start adding the span(n) mixin to your individual grid elements
+4.  Add the span(n) mixin to your media queries for a responsive grid flow
+5.  Be happy with your clean semantic HTML!!!
+*/
+/* -----------------------------------------------------------------
+VARIABLES - EDIT THESE
+-------------------------------------------------------------------- */
+/* Number of Columns
+–––––––––––––––––––– */
+/* How many columns does your design have?
+                            This will determine how 
+
+/* Maximum Grid Width
+––––––––––––––––––––– */
+/* total available width of row 
+                      contents. (include units) */
+/* Grid Spacing (gutter)
+–––––––––––––––––––––––– */
+/* Unit for the spacing variables below, 
+                           options are: em, rem, px, or pt */
+/* Horizontal gutter 
+                           (how much space between grid items) - do not include units */
+/* Vertical gutter
+                           how much space above/below grid items) - do not include units */
+/* -----------------------------------------------------------------
+MIXINS - DO NOT EDIT THESE, BUT USE THEM (PLEASE READ THROUGH)
+-------------------------------------------------------------------- 
+
+Table of Contents
+-----------------
+1. Grid Padding
+2. Grid Container 
+3. Grid Nested
+4. Grid Span
+5. Grid Prefix
+6. Grid Suffix
+*/
+/* Grid Padding
+––––––––––––––––––––––––––––––––––––––––––––––––––
+This Mixin is used inside our other mixins to 
+establish gutters (vertical + horizontal).
+You can use it on anything that needs the grid 
+gutter applied.  */
+/* Grid Container
+–––––––––––––––––––––––––––––––––––––––––––––––––– 
+Apply this mixin to any "row" or outer wrapper of 
+grid items.  Its children are grid items */
+/* Grid Nested
+–––––––––––––––––––––––––––––––––––––––––––––––––– 
+Zero out all padding so that the nested grid elements will
+form the gutter, not the wrapper itself. */
+/* Grid Span
+–––––––––––––––––––––––––––––––––––––––––––––––––– 
+Use this mixin to apply the grid to an element (div, section, etc).
+This grid is based on percentages of 100.  eg --
+  span(25) is a quarter, or 25%
+  span(33) is a third, or 33.333%
+  and so on.
+*/
+/* Grid Prefix
+––––––––––––––––––––––––––––––––––––––––––––––––––  
+Add space before an element or "push it to the left"
+by an amount equaling n% of the grid
+sample usage: @include prefix(25)
+sample result:  gives a margin-left of 25%
+ */
+/* Grid Suffix
+–––––––––––––––––––––––––––––––––––––––––––––––––– 
+Add space after an element equaling n% of the grid
+sample usage: @include append(25)
+sample result:  gives a margin-right of 25% */
+/* 
+Box Model 
+–––––––––––––––––––––––––––––––––––––––––––––––––– 
+Set Box Model to 'border-box' just in case its not set elsewhere */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
+acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub,
+sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+html, body {
+  height: 100%; }
+
+a img {
+  border: none; }
+
+blockquote {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+/* =================================================================
+                              TYPOGRAPHY
+==================================================================== 
+  This partial controls all global typographic styles, spacing, and heirarchy
+  for your app/site.  Individualized or customized styles should be avoided,
+  (ie - page/section specific type styles).  If you must do this,
+  place them in the respective SCSS partial for that page/section.  
+*/
+/* ====================== Table of Contents =========================
+1) Variables 
+      a) Default
+      b) Secondary Fontstack
+      c) Font Weights
+      d) Type Sizes
+2) Sizes
+      a) FontSize mixin
+      b) TypeScale mixin
+3) Global style defaults
+4) Headers
+5) Paragraph
+6) Lists
+7) Links
+8) Pre-formatted/code
+====================================================================*/
+/*
+====================================================================
+2.  VARIABLES
+==================================================================== */
+/* 
+  Text Colors
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* 
+  Fonts/Typefaces
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* 
+      Fonts Sizes
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* 
+      2a) FontSize Mixin
+      –––––––––––––––––––––––––––––––––––––––––––––––––– 
+       There are two ways to size your typograhy:
+       (*)  "fontSizes" allows you to set available 
+              type sizes manually
+      */
+/* 
+      2b) TypeScale Mixin
+      –––––––––––––––––––––––––––––––––––––––––––––––––– 
+      (*)  "typeScale" uses a multiplier to create a 
+              set of relative unit font sizes (ems or rems)
+               see http://type-scale.com/ */
+/*
+====================================================================
+3. STYLES
+==================================================================== */
+/* 
+Global style defaults
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+html {
+  font-size: 75%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+  @media screen and (min-width: 40em) {
+    html {
+      font-size: 87.5%; } }
+  @media screen and (min-width: 50em) {
+    html {
+      font-size: 87.5%; } }
+  @media screen and (min-width: 64em) {
+    html {
+      font-size: 87.5%; } }
+  @media screen and (min-width: 100em) {
+    html {
+      font-size: 93.75%; } }
+
+body {
+  font-family: Brandon Grotesque;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem; }
+
+/* 
+Headers
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+h1, h2, h3, h4, h5, h6 {
+  -webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  -moz-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  -ms-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  -o-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  font-family: Brandon Grotesque;
+  font-style: normal;
+  font-weight: 300; }
+
+h1, .alpha {
+  line-height: 3rem;
+  font-size: 2.33333rem;
+  margin-bottom: 0.30499rem;
+  padding-top: 0.69501rem;
+  line-height: 4rem; }
+  @media screen and (min-width: 40em) {
+    h1, .alpha {
+      font-size: 2.14286rem;
+      margin-bottom: 0.23928rem;
+      padding-top: 0.76072rem; } }
+  @media screen and (min-width: 50em) {
+    h1, .alpha {
+      font-size: 2.28571rem;
+      margin-bottom: 0.28856rem;
+      padding-top: 0.71144rem; } }
+  @media screen and (min-width: 64em) {
+    h1, .alpha {
+      font-size: 2.85714rem;
+      margin-bottom: 0.4857rem;
+      padding-top: 0.5143rem; } }
+  @media screen and (min-width: 100em) {
+    h1, .alpha {
+      font-size: 3.33333rem;
+      margin-bottom: 0.64999rem;
+      padding-top: 0.35001rem; } }
+
+h2, .beta {
+  line-height: 3rem;
+  font-size: 2.08333rem;
+  margin-bottom: 0.21874rem;
+  padding-top: 0.78126rem; }
+  @media screen and (min-width: 40em) {
+    h2, .beta {
+      font-size: 1.9rem;
+      margin-bottom: 0.15549rem;
+      padding-top: 0.84451rem; } }
+  @media screen and (min-width: 50em) {
+    h2, .beta {
+      font-size: 2.00714rem;
+      margin-bottom: 0.19245rem;
+      padding-top: 0.80755rem; } }
+  @media screen and (min-width: 64em) {
+    h2, .beta {
+      font-size: 2.53571rem;
+      margin-bottom: 0.37481rem;
+      padding-top: 0.62519rem; } }
+  @media screen and (min-width: 100em) {
+    h2, .beta {
+      font-size: 2.92667rem;
+      margin-bottom: 0.50969rem;
+      padding-top: 0.49031rem; } }
+
+h3, .gamma {
+  line-height: 3rem;
+  font-size: 1.86667rem;
+  margin-bottom: 0.14399rem;
+  padding-top: 0.85601rem; }
+  @media screen and (min-width: 40em) {
+    h3, .gamma {
+      font-size: 1.71429rem;
+      margin-bottom: 0.09142rem;
+      padding-top: 0.90858rem; } }
+  @media screen and (min-width: 50em) {
+    h3, .gamma {
+      font-size: 1.82857rem;
+      margin-bottom: 0.13085rem;
+      padding-top: 0.86915rem; } }
+  @media screen and (min-width: 64em) {
+    h3, .gamma {
+      font-size: 2.14286rem;
+      margin-bottom: 0.23928rem;
+      padding-top: 0.76072rem; } }
+  @media screen and (min-width: 100em) {
+    h3, .gamma {
+      font-size: 2.35333rem;
+      margin-bottom: 0.31189rem;
+      padding-top: 0.68811rem; } }
+
+h4, .delta {
+  line-height: 2rem;
+  font-size: 1.66667rem;
+  margin-bottom: -0.42501rem;
+  padding-top: 0.42501rem; }
+  @media screen and (min-width: 40em) {
+    h4, .delta {
+      font-size: 1.52143rem;
+      margin-bottom: -0.47512rem;
+      padding-top: 0.47512rem; } }
+  @media screen and (min-width: 50em) {
+    h4, .delta {
+      font-size: 1.60714rem;
+      margin-bottom: -0.44555rem;
+      padding-top: 0.44555rem; } }
+  @media screen and (min-width: 64em) {
+    h4, .delta {
+      font-size: 1.90714rem;
+      margin-bottom: -0.34205rem;
+      padding-top: 0.34205rem; } }
+  @media screen and (min-width: 100em) {
+    h4, .delta {
+      font-size: 2.07333rem;
+      margin-bottom: -0.28471rem;
+      padding-top: 0.28471rem; } }
+
+h5, .epsilon {
+  line-height: 2rem;
+  font-size: 1.49167rem;
+  margin-bottom: -0.48539rem;
+  padding-top: 0.48539rem; }
+  @media screen and (min-width: 40em) {
+    h5, .epsilon {
+      font-size: 1.37143rem;
+      margin-bottom: -0.52687rem;
+      padding-top: 0.52687rem; } }
+  @media screen and (min-width: 50em) {
+    h5, .epsilon {
+      font-size: 1.46429rem;
+      margin-bottom: -0.49483rem;
+      padding-top: 0.49483rem; } }
+  @media screen and (min-width: 64em) {
+    h5, .epsilon {
+      font-size: 1.60714rem;
+      margin-bottom: -0.44555rem;
+      padding-top: 0.44555rem; } }
+  @media screen and (min-width: 100em) {
+    h5, .epsilon {
+      font-size: 1.66667rem;
+      margin-bottom: -0.42501rem;
+      padding-top: 0.42501rem; } }
+
+h6, .zeta {
+  line-height: 2rem;
+  font-size: 1.66667rem;
+  margin-bottom: -0.42501rem;
+  padding-top: 0.42501rem;
+  font-weight: 300; }
+  @media screen and (min-width: 40em) {
+    h6, .zeta {
+      font-size: 1.52143rem;
+      margin-bottom: -0.47512rem;
+      padding-top: 0.47512rem; } }
+  @media screen and (min-width: 50em) {
+    h6, .zeta {
+      font-size: 1.60714rem;
+      margin-bottom: -0.44555rem;
+      padding-top: 0.44555rem; } }
+  @media screen and (min-width: 64em) {
+    h6, .zeta {
+      font-size: 1.90714rem;
+      margin-bottom: -0.34205rem;
+      padding-top: 0.34205rem; } }
+  @media screen and (min-width: 100em) {
+    h6, .zeta {
+      font-size: 2.07333rem;
+      margin-bottom: -0.28471rem;
+      padding-top: 0.28471rem; } }
+
+/* 
+Paragraph
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+p {
+  line-height: 2rem;
+  margin-bottom: 1.45999rem;
+  padding-top: 0.54001rem;
+  -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  -o-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1; }
+  @media screen and (min-width: 40em) {
+    p {
+      margin-bottom: 1.41892rem;
+      padding-top: 0.58108rem; } }
+  @media screen and (min-width: 50em) {
+    p {
+      margin-bottom: 1.44356rem;
+      padding-top: 0.55644rem; } }
+  @media screen and (min-width: 64em) {
+    p {
+      margin-bottom: 1.49285rem;
+      padding-top: 0.50715rem; } }
+  @media screen and (min-width: 100em) {
+    p {
+      margin-bottom: 1.50599rem;
+      padding-top: 0.49401rem; } }
+
+/* 
+6) Lists
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+ul, ol {
+  line-height: 2rem;
+  margin-bottom: 1.45999rem;
+  padding-top: 0.54001rem; }
+  @media screen and (min-width: 40em) {
+    ul, ol {
+      margin-bottom: 1.41892rem;
+      padding-top: 0.58108rem; } }
+  @media screen and (min-width: 50em) {
+    ul, ol {
+      margin-bottom: 1.44356rem;
+      padding-top: 0.55644rem; } }
+  @media screen and (min-width: 64em) {
+    ul, ol {
+      margin-bottom: 1.49285rem;
+      padding-top: 0.50715rem; } }
+  @media screen and (min-width: 100em) {
+    ul, ol {
+      margin-bottom: 1.50599rem;
+      padding-top: 0.49401rem; } }
+
+ul li, ol li {
+  -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  -o-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  margin-left: 2rem; }
+  @media screen and (min-width: 40em) {
+    ul li, ol li {
+      margin-left: 0; } }
+
+/*
+Links
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+a {
+  color: #EB4147;
+  text-decoration: none; }
+  a:hover, a:active, a:focus {
+    color: #e82128;
+    text-decoration: none; }
+
+/* 
+Pre-formatted/code
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+code, pre {
+  background-color: #F5F4F2;
+  font-family: Menlo, monospace; }
+
+pre {
+  display: block;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word; }
+
+code {
+  font-size: 1.06667rem;
+  line-height: 1rem; }
+  @media screen and (min-width: 40em) {
+    code {
+      font-size: 0.97143rem; } }
+  @media screen and (min-width: 50em) {
+    code {
+      font-size: 1.02857rem; } }
+  @media screen and (min-width: 64em) {
+    code {
+      font-size: 1.07143rem; } }
+  @media screen and (min-width: 100em) {
+    code {
+      font-size: 1.04rem; } }
+
+/* 
+Bold
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+b, strong, .bold {
+  font-weight: 700; }
+
+/* 
+Italic
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+em, i, .italic {
+  font-style: italic; }
+
+/* 
+Caption and Small Inline Text
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+small, .caption {
+  font-size: 1.06667rem;
+  font-family: Brandon Grotesque;
+  font-style: normal;
+  font-weight: 400; }
+  @media screen and (min-width: 40em) {
+    small, .caption {
+      font-size: 0.97143rem; } }
+  @media screen and (min-width: 50em) {
+    small, .caption {
+      font-size: 1.02857rem; } }
+  @media screen and (min-width: 64em) {
+    small, .caption {
+      font-size: 1.07143rem; } }
+  @media screen and (min-width: 100em) {
+    small, .caption {
+      font-size: 1.04rem; } }
+
+small {
+  line-height: 1rem; }
+
+.caption {
+  line-height: 2rem;
+  margin-bottom: 1.36799rem;
+  padding-top: 0.63201rem;
+  color: #000; }
+  @media screen and (min-width: 40em) {
+    .caption {
+      margin-bottom: 1.33513rem;
+      padding-top: 0.66487rem; } }
+  @media screen and (min-width: 50em) {
+    .caption {
+      margin-bottom: 1.35485rem;
+      padding-top: 0.64515rem; } }
+  @media screen and (min-width: 64em) {
+    .caption {
+      margin-bottom: 1.36963rem;
+      padding-top: 0.63037rem; } }
+  @media screen and (min-width: 100em) {
+    .caption {
+      margin-bottom: 1.35879rem;
+      padding-top: 0.64121rem; } }
+
+h1 + .caption, .alpha + .caption, h2 + .caption, .beta + .caption, h3 + .caption, .gamma + .caption {
+  margin-top: -1rem; }
+
+.delta + .caption, .epsilon + .caption, .zeta + .caption {
+  margin-top: 0rem; }
+
+/* 
+Capital Letter Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.upper {
+  letter-spacing: 0.1rem;
+  text-transform: uppercase; }
+
+.small-caps {
+  -webkit-font-feature-settings: 'smcp' 1, 'kern' 1;
+  -moz-font-feature-settings: 'smcp' 1, 'kern' 1;
+  -ms-font-feature-settings: 'smcp' 1, 'kern' 1;
+  -o-font-feature-settings: 'smcp' 1, 'kern' 1;
+  font-feature-settings: 'smcp' 1, 'kern' 1;
+  letter-spacing: 0.1rem; }
+
+/* 
+Numbers
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.lining-numerals {
+  -webkit-font-feature-settings: 'lnum' 1, 'kern' 1;
+  -moz-font-feature-settings: 'lnum' 1, 'kern' 1;
+  -ms-font-feature-settings: 'lnum' 1, 'kern' 1;
+  -o-font-feature-settings: 'lnum' 1, 'kern' 1;
+  font-feature-settings: 'lnum' 1, 'kern' 1; }
+
+.oldstyle-numerals {
+  -webkit-font-feature-settings: 'onum' 1, 'kern' 1;
+  -moz-font-feature-settings: 'onum' 1, 'kern' 1;
+  -ms-font-feature-settings: 'onum' 1, 'kern' 1;
+  -o-font-feature-settings: 'onum' 1, 'kern' 1;
+  font-feature-settings: 'onum' 1, 'kern' 1; }
+
+/* Base
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* apply a natural box layout model to all elements, but allowing components to change */
+html, body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+.page-wrapper {
+  min-height: 100%;
+  position: relative; }
+
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 93%; }
+  .container::after {
+    content: "";
+    display: table;
+    clear: both; }
+
+/* Forms
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  font-family: "Brandon Grotesque";
+  font-weight: 400;
+  color: #000000;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  font-size: 1rem;
+  height: 38px;
+  padding: 2rem;
+  /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #F7F7F7;
+  border: 2px solid #F7F7F7;
+  border-radius: 0px;
+  box-shadow: none;
+  box-sizing: border-box; }
+
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid rgba(235, 65, 71, 0.9);
+  outline: 0; }
+
+label,
+legend {
+  font-family: "Brandon Grotesque";
+  font-weight: 400;
+  color: #000000;
+  display: block;
+  margin-bottom: .5rem; }
+
+fieldset {
+  padding: 0;
+  border-width: 0; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline; }
+
+label > .label-body {
+  display: inline-block;
+  margin-left: .5rem;
+  font-weight: normal; }
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.btn,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  font-family: "Brandon Grotesque";
+  font-weight: 400;
+  color: #000000;
+  display: inline-block;
+  padding: 5px 35px;
+  color: #000000;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 0;
+  border: 2px solid #e5e5e5;
+  cursor: pointer;
+  box-sizing: border-box; }
+
+.btn:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.btn:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: #EB4147;
+  border-color: #EB4147;
+  outline: 0; }
+
+.btn.btn-primary,
+button.btn-primary,
+input[type="submit"].btn-primary,
+input[type="reset"].btn-primary,
+input[type="button"].btn-primary {
+  color: #FFFFFF;
+  background-color: #EB4147;
+  border-color: #EB4147; }
+
+.btn.btn-primary:hover,
+button.btn-primary:hover,
+input[type="submit"].btn-primary:hover,
+input[type="reset"].btn-primary:hover,
+input[type="button"].btn-primary:hover,
+.btn.btn-primary:focus,
+button.btn-primary:focus,
+input[type="submit"].btn-primary:focus,
+input[type="reset"].btn-primary:focus,
+input[type="button"].btn-primary:focus {
+  color: #FFFFFF;
+  background-color: #e82128;
+  border-color: #e82128; }
+
+.btn.btn-transparent {
+  border-color: transparent;
+  background-color: transparent; }
+
+.btn.btn-secondary,
+button.btn-secondary,
+input[type="submit"].btn-secondary,
+input[type="reset"].btn-secondary,
+input[type="button"].btn-secondary {
+  color: #000000;
+  background-color: transparent;
+  border-color: #e5e5e5; }
+
+.btn.btn-secondary:hover,
+button.btn-secondary:hover,
+input[type="submit"].btn-secondary:hover,
+input[type="reset"].btn-secondary:hover,
+input[type="button"].btn-secondary:hover,
+.btn.btn-secondary:focus,
+button.btn-secondary:focus,
+input[type="submit"].btn-secondary:focus,
+input[type="reset"].btn-secondary:focus,
+input[type="button"].btn-secondary:focus {
+  color: #EB4147;
+  background-color: transparent;
+  border-color: #EB4147; }
+
+/* Tables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #E1E1E1; }
+
+th:first-child,
+td:first-child {
+  padding-left: 0; }
+
+th:last-child,
+td:last-child {
+  padding-right: 0; }
+
+/* -------------------------------------------
+PAGE HEADER
+---------------------------------------------- */
+.header {
+  z-index: 200;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  float: left;
+  width: 65%;
+  margin-left: 30%;
+  top: 0;
+  padding: 0;
+  padding-top: 2rem; }
+
+/*
+Header Logo Block
+---------------------------------------------- */
+.logo {
+  float: left;
+  position: fixed;
+  left: 5%;
+  top: 2rem;
+  width: 20%; }
+
+.logo__image {
+  width: 100%;
+  max-width: 244px;
+  height: auto; }
+
+/*
+Main Menu
+---------------------------------------------- */
+.nav {
+  list-style: none; }
+
+.nav-item {
+  display: inline-block;
+  float: left;
+  margin-right: 55px;
+  list-style: none; }
+
+.nav-item a {
+  font-family: "Brandon Grotesque";
+  font-weight: 700;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #000000;
+  line-height: 5.5rem; }
+  .nav-item a:hover {
+    color: #EB4147; }
+
+.cta {
+  float: right;
+  position: relative;
+  line-height: 5.5rem; }
+  @media screen and (max-width: 1023px) {
+    .cta {
+      width: 50%;
+      float: left;
+      position: absolute;
+      bottom: 20px; } }
+  .cta .btn {
+    margin-left: 15px; }
+
+.home .nav {
+  position: fixed;
+  right: 4rem;
+  z-index: 9999; }
+
+/*
+User Button and Dropdown for logged in users
+---------------------------------------------- */
+.usr {
+  z-index: 200; }
+
+.usr__btn {
+  width: 100%; }
+
+.usr:hover .usr__menuIcon {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; }
+
+.usr:hover .usr__dropdown {
+  display: block;
+  opacity: 1;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; }
+
+.usr__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 2px; }
+
+.usr__name {
+  margin-right: 5px;
+  margin-left: 5px; }
+
+.usr__menuIcon {
+  font-size: 90%;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; }
+
+.usr__dropdown {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  display: none;
+  position: absolute;
+  width: 200px;
+  opacity: 0;
+  background: #FFFFFF;
+  border: 1px solid #e5e5e5;
+  list-style: none;
+  padding-top: 0;
+  margin-top: -1rem; }
+
+.usr__dropdownItem {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #e5e5e5; }
+  .usr__dropdownItem:last-child {
+    border-bottom: 0; }
+  .usr__dropdownItem a {
+    display: inline-block;
+    width: 100%;
+    height: 100%; }
+
+.gform_body, .gform_footer {
+  max-width: 900px; }
+
+.gform_fields {
+  list-style: none; }
+
+#gform_submit_button_1 {
+  margin-right: 2.5%;
+  margin-left: 5%;
+  width: 90%; }
+
+.name_first, .name_last {
+  float: left;
+  width: 50%; }
+  .name_first label, .name_last label {
+    display: none; }
+
+.name_first {
+  padding-right: 50px; }
+
+.name-last {
+  padding-left: 50px; }
+
+.form__50 .ginput_container {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0; }
+  .form__50 .ginput_container .ginput_left, .form__50 .ginput_container .ginput_right {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    float: left;
+    width: 50%; }
+
+.validation_error, .validation_message {
+  background: rgba(235, 65, 71, 0.05);
+  border: 1px solid rgba(235, 65, 71, 0.15);
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  color: #EB4147; }
+
+/*good css
+---------- */
+.gfield_checkbox, .gfield_radio {
+  list-style: none; }
+  .gfield_checkbox li, .gfield_radio li {
+    clear: both; }
+  .gfield_checkbox li label, .gfield_checkbox li input, .gfield_radio li label, .gfield_radio li input {
+    float: left; }
+
+.gfield-50 {
+  float: left;
+  width: 50%; }
+
+.gform_page_footer {
+  width: 100%;
+  clear: both;
+  margin-top: 4rem; }
+
+.gfield_label {
+  font-weight: 600; }
+
+/*
+-------------------------------------------------
+MEMBERSHIP APPLICATION FORM
+------------------------------------------------- */
+#gform_wrapper_4 {
+  padding-top: 2rem; }
+
+.gf_page_steps {
+  width: 100%;
+  max-width: 1240px; }
+
+.gf_step_number {
+  display: none; }
+
+.gf_step {
+  float: left;
+  width: 25%;
+  color: #ccc;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem; }
+
+.gf_step_clear {
+  display: inline-block; }
+
+.gf_step_clear:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
+.gf_step_first {
+  text-align: left; }
+  .gf_step_first .gf_step_circle {
+    left: 0; }
+
+.gf_step_last .gf_step_label {
+  border-bottom: 0; }
+
+.gf_step_label {
+  display: block;
+  position: relative;
+  padding-bottom: .5rem;
+  border-bottom: 3px solid #e5e5e5; }
+
+.gf_step_active {
+  color: #EB4147; }
+  .gf_step_active .gf_step_name {
+    color: #EB4147; }
+
+.gf_step_name {
+  display: block;
+  margin-top: -0.5rem;
+  padding-bottom: .5rem;
+  font-family: "Brandon Grotesque";
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
+
+.gf_step_account {
+  margin-left: -23px; }
+
+.gf_step_relationship {
+  margin-left: -70px; }
+
+.gf_step_basic_info {
+  margin-left: -30px; }
+
+.gf_step_submit {
+  margin-left: -15px; }
+
+.gf_step_icons i {
+  font-size: 1.25rem; }
+
+.gf_step_circle {
+  display: block;
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #e5e5e5; }
+
+.gf_step_completed .gf_step_label {
+  border-bottom: 3px solid #EB4147; }
+
+.gf_step_completed .gf_step_circle, .gf_step_active .gf_step_circle {
+  background: #EB4147; }
+
+.gf_step_completed_indicator {
+  opacity: 0;
+  display: none;
+  color: #68CF87;
+  margin-left: 4px; }
+
+.gf_step_completed .gf_step_completed_indicator {
+  display: inline;
+  opacity: 1; }
+
+/* =================================================================
+                             LOGIN SCREEN
+====================================================================  */
+.login {
+  position: absolute;
+  max-width: 650px;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  text-align: center; }
+
+.login__form {
+  margin-top: 4rem; }
+
+.login__form input {
+  margin: 1rem; }
+
+.login__form input[type=submit],
+.login__form input[type=text],
+.login__form input[type=password] {
+  width: 100%; }
+
+.login__remember {
+  width: 100%; }
+
+.login__rememberCheck {
+  float: left; }
+
+.login__rememberLabel {
+  float: left;
+  margin-top: .5rem; }
+
+.login__logo .logo__image {
+  max-width: 300px; }
+
+/* =================================================================
+                             HOMEPAGE
+==================================================================== */
+/* 
+  Landing Area
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.landing {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100; }
+
+.landing__block {
+  width: 50%;
+  height: 100%;
+  float: left;
+  text-align: center; }
+  @media screen and (max-width: 1023px) {
+    .landing__block {
+      width: 100%; } }
+
+.landing__photo {
+  background-image: url("../img/homepage_placeholder.jpg");
+  background-size: 105%,50%; }
+
+.landing__logo {
+  width: 53%;
+  max-width: 384px;
+  margin-top: 6rem; }
+
+.landing__taglineBlock {
+  margin-top: 4rem; }
+
+.landing__tagline {
+  font-weight: 300;
+  font-size: 1.75rem;
+  text-align: left;
+  margin-bottom: 4rem;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 65%; }
+
+/* 
+  Nav Off Canvas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.home .logo {
+  -webkit-transform: translateY(-120%);
+  -ms-transform: translateY(-120%);
+  transform: translateY(-120%); }
+
+.home .nav-item {
+  -webkit-transform: translateY(-120%);
+  -ms-transform: translateY(-120%);
+  transform: translateY(-120%); }
+
+.home .nav .btn-secondary {
+  border-color: #FFFFFF; }
+  .home .nav .btn-secondary:hover {
+    border-color: #EB4147; }
+
+.wrapper {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 93%; }
+  .wrapper::after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.content-wrapper {
+  margin-left: 30%;
+  padding-top: 10rem; }
+  @media screen and (max-width: 1023px) {
+    .content-wrapper {
+      margin-left: 17%; } }
+
+.article-h1 {
+  margin-left: 5%;
+  padding-right: 5%; }
+
+.footer {
+  width: 100%;
+  height: 100px;
+  left: 0; }

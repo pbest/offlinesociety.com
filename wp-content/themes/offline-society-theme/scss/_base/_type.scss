@@ -1,0 +1,360 @@
+/* =================================================================
+                              TYPOGRAPHY
+==================================================================== 
+  This partial controls all global typographic styles, spacing, and heirarchy
+  for your app/site.  Individualized or customized styles should be avoided,
+  (ie - page/section specific type styles).  If you must do this,
+  place them in the respective SCSS partial for that page/section.  
+*/
+
+
+/* ====================== Table of Contents =========================
+1) Variables 
+      a) Default
+      b) Secondary Fontstack
+      c) Font Weights
+      d) Type Sizes
+2) Sizes
+      a) FontSize mixin
+      b) TypeScale mixin
+3) Global style defaults
+4) Headers
+5) Paragraph
+6) Lists
+7) Links
+8) Pre-formatted/code
+====================================================================*/
+
+
+/*
+====================================================================
+2.  VARIABLES
+==================================================================== */
+  /* 
+  Text Colors
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  $headingColor: $black;
+  $bodyColor: #494949;
+  $linkColor: $red;
+  $hoverColor: $red-1;
+  $captionColor: #000;
+  $white: #FFFFFF;
+  $backgroundColor: $white;
+  $codeBackgroundColor: #F5F4F2;
+
+
+  /* 
+  Fonts/Typefaces
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  // Add typefaces here. 
+  // Add weight and style details too.
+  // ! Set cap height to set to the baseline.
+  $bodytype: (
+    font-family: 'Brandon Grotesque', serif,
+    light: 300,
+    regular: 400,
+    bold: 700,
+    italic: italic,
+    cap-height: 0.69
+  );
+
+  $headingtype: (
+    font-family: 'Brandon Grotesque', sans-serif,
+    light: 300,
+    regular: 400,
+    bold: 700,
+    cap-height: 0.69
+  );
+
+  $monospacetype: (
+    font-family: 'Menlo, monospace',
+    regular: 400,
+    cap-height: 0.68
+  );
+
+      /* 
+      Fonts Sizes
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+
+
+      /* 
+      2a) FontSize Mixin
+      –––––––––––––––––––––––––––––––––––––––––––––––––– 
+       There are two ways to size your typograhy:
+       (*)  "fontSizes" allows you to set available 
+              type sizes manually
+      */
+
+      // (*) "fontSizes" range from smallest-largest
+      $fontSizes: (
+        smallest: 10px,
+        smaller: 12px,
+        small: 13px,
+        default: 16px,
+        large: 18px,
+        larger: 22px,
+        largest: 38px
+      );
+
+      // (*) "typeScale" also range from smallest-largest
+
+
+      @mixin fontSize($fontSize:default) {
+        font-size: #{map-get($fontSizes, $fontSize)}; 
+      }
+
+
+      /* 
+      2b) TypeScale Mixin
+      –––––––––––––––––––––––––––––––––––––––––––––––––– 
+      (*)  "typeScale" uses a multiplier to create a 
+              set of relative unit font sizes (ems or rems)
+               see http://type-scale.com/ */
+
+
+     @mixin allcaps {
+        font-family: map-get($bodytype, font-family);
+        font-weight: map-get($bodytype, bold);
+        color: $black;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+     }  
+
+     @mixin type__default {
+        font-family: map-get($bodytype, font-family);
+        font-weight: map-get($bodytype, regular);
+        color: $black;
+     }          
+/*
+====================================================================
+3. STYLES
+==================================================================== */
+
+
+/* 
+Global style defaults
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+  html {
+    @include rootsize;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: unquote(map-get($bodytype, font-family));
+    font-style: normal;
+    font-weight: map-get($bodytype, regular);
+    line-height: 2rem;
+  }
+
+
+/* 
+Headers
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+  h1, h2, h3, h4, h5, h6 {
+    -webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+    -moz-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+    -ms-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+    -o-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+    font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+
+    //color: $headingColour;
+    font-family: unquote(map-get($headingtype, font-family));
+    font-style: normal;
+    font-weight: 300;
+  }
+
+  h1, .alpha {
+    @include sassline($fontsize: alpha, $font: $headingtype, $lineheight: 3, $below: 1, $breakpoint: all);
+    line-height: 4rem;
+    font-weight: map-get($headingtype, light);
+  }
+
+  // Heading level 2.
+  h2, .beta {
+    @include sassline(beta, $headingtype, 3, 1, all);
+  }
+
+  // Heading level 3.
+  h3, .gamma {
+    @include sassline(gamma, $headingtype, 3, 1, all);
+  }
+
+  // Heading level 4.
+  h4, .delta {
+    @include sassline(delta, $headingtype, 2, 0, all);
+  }
+
+  // Heading level 5.
+  h5, .epsilon {
+    @include sassline(epsilon, $headingtype, 2, 0, all);
+  }
+
+  // Heading level 6.
+  h6, .zeta {
+    @include sassline(delta, $headingtype, 2, 0, all);
+    font-weight: 300;
+  }
+
+
+/* 
+Paragraph
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+  p {
+    @include baseline($fontsize: zeta, $font: $bodytype, $lineheight: 2, $below: 2, $breakpoint: all);
+      -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+      -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+      -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+      -o-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+      font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    }
+
+
+/* 
+6) Lists
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+  ul, ol {
+    @include baseline(zeta, $bodytype, 2, 2, all);
+  }
+
+  ul li, ol li {
+    @include breakpoint(break-1) {
+        margin-left: 0;
+    }  
+    -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    -o-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    margin-left: 2rem;      
+  }
+
+
+/*
+Links
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+  a {
+    //@include prefix((transition: color .250s), webkit ms moz o);
+    color: $linkColor;
+    text-decoration: none;
+
+    &:hover, &:active, &:focus {
+      color: $hoverColor;
+      text-decoration: none;
+    }
+  }
+
+
+/* 
+Pre-formatted/code
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+  code, pre {
+    background-color: $codeBackgroundColor;
+    font-family: unquote(map-get($monospacetype, font-family));
+  }
+
+  pre {
+    display: block;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    white-space: pre;
+    white-space: pre-wrap;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+
+  code {
+    @include fontsize(theta, all);
+    line-height: 1rem;
+  }
+
+
+/* 
+Bold
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+  b, strong, .bold {
+    font-weight: map-get($bodytype, bold);
+  }
+
+
+/* 
+Italic
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+  em, i, .italic {
+    font-style: map-get($bodytype, italic);
+  }
+
+
+/* 
+Caption and Small Inline Text
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+  small, .caption {
+    @include fontsize(theta, all);
+    font-family: unquote(map-get($headingtype, font-family));
+    font-style: normal;
+    font-weight: map-get($headingtype, regular);
+  }
+
+  small {
+    line-height: 1rem;
+  }
+
+  .caption {
+    @include baseline(theta, $headingtype, 2, 2, all);
+    color: $captionColor;
+  }
+
+  // Nice spacing for captions.
+  h1 + .caption, .alpha + .caption, h2 + .caption, .beta + .caption, h3 + .caption, .gamma + .caption {
+    margin-top: -1rem;
+  }
+
+  .delta + .caption, .epsilon + .caption, .zeta + .caption {
+    margin-top: 0rem;
+  }
+
+
+/* 
+Capital Letter Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .upper {
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+  }
+
+  // Real small caps.
+  .small-caps {
+    -webkit-font-feature-settings: 'smcp' 1, 'kern' 1;
+    -moz-font-feature-settings: 'smcp' 1, 'kern' 1;
+    -ms-font-feature-settings: 'smcp' 1, 'kern' 1;
+    -o-font-feature-settings: 'smcp' 1, 'kern' 1;
+    font-feature-settings: 'smcp' 1, 'kern' 1;
+
+    letter-spacing: 0.1rem;
+  }
+
+
+/* 
+Numbers
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+  // Consistent height numbers with OpenType.
+  .lining-numerals {
+    -webkit-font-feature-settings: 'lnum' 1, 'kern' 1;
+    -moz-font-feature-settings: 'lnum' 1, 'kern' 1;
+    -ms-font-feature-settings: 'lnum' 1, 'kern' 1;
+    -o-font-feature-settings: 'lnum' 1, 'kern' 1;
+    font-feature-settings: 'lnum' 1, 'kern' 1;
+  }
+
+  // Ascending and descending numbers with OpenType.
+  .oldstyle-numerals {
+    -webkit-font-feature-settings: 'onum' 1, 'kern' 1;
+    -moz-font-feature-settings: 'onum' 1, 'kern' 1;
+    -ms-font-feature-settings: 'onum' 1, 'kern' 1;
+    -o-font-feature-settings: 'onum' 1, 'kern' 1;
+    font-feature-settings: 'onum' 1, 'kern' 1;
+  }
+
+

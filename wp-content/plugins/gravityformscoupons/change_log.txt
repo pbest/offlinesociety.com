@@ -1,0 +1,76 @@
+---------------------------------------------------------------------
+Version 2.1.2
+    - Fixed an issue with the upgrade routine which caused it run even if a pre-framework version hadn't been installed.
+
+---------------------------------------------------------------------
+Version 2.1.1
+    - Added required and custom validation message settings.
+    - Fixed an issue with the coupon field where removed coupons were not removed from the hidden coupon detail input resulting in the appearance that the coupon was reapplied when returning to the page containing the coupon field.
+
+---------------------------------------------------------------------
+Version 2.1
+    - Added Spanish (es_ES) translation.
+    - Updated gform_coupon_script deps to include gform_json.
+    - Fixed a low severity security vulnerability in the admin area which could be exploited by authenticated users with form administration permissions.
+
+---------------------------------------------------------------------
+Version 2.0
+    - Added Addon Framework integration.
+	- Added support for using the coupon field with conditional logic.
+	- Added support for placeholders.
+    - Added POT file.
+	- Added a bulk action to the feed page for resetting the coupon usage count.
+	- Added the visibility setting to the fields advanced tab.
+	- Added the capability to view the plugin page.
+	- Added text domain/path to header.
+    - Added 'gform_coupons_discount_amount' PHP hook to support modifying the discount amount.
+        add_filter( 'gform_coupons_discount_amount', 'add_logged_in_user_bonus_discount', 10, 3 );
+        function add_logged_in_user_bonus_discount( $discount, $coupon, $price ) {
+            if( is_user_logged_in() ) {
+                $discount += 5;
+            }
+            return $discount;
+        }
+    - Added 'gform_coupons_discount_amount' JS hook.
+        gform.addFilter( 'gform_coupons_discount_amount', function( discount, couponType, couponAmount, price, totalDiscount ) {
+            // you would need to write your own JS-version of is_user_logged_in()
+            if( is_user_logged_in() ) {
+                discount += 5;
+            }
+            return discount;
+        } );
+
+	- Fixed an issue with the ajax request for applying coupons not functioning for logged out users.
+	- Fixed an issue with feed processing which in some situations could prevent the coupon usage count being updated.
+	- Fixed an issue with the field label for attribute.
+	- Fixed an issue with the usage count being lost when updating an existing coupon.
+	- Fixed an issue where pasting the coupon code using right-click caused the Apply button to not enable.
+    - Fixed issue where existing coupon code was not saved when editing an entry.
+    - Fixed issue with some translation text domain strings being misspelled.
+
+---------------------------------------------------------------------
+Version 1.1
+	- Updated plugin updated method so that it takes advantage of proxy manager to get around the blacklisted IP issue.
+	- Updated several instances of domain used for translations from gravityformscoupon to the correct domain of gravityformscoupons.
+	- Updated javascript in DisableApplyButton function since the button remained disabled for some users.
+	- Fixed issue with product info cache not including coupon on certain situations.
+	- Fixed issue with text domain of some strings.
+    - Fixed another issue with duplicate coupon codes being allowed to be created.
+    - Fixed issue with duplicate coupon codes being allowed to be created.
+    - Fixed fatal error when plugin is activated without Gravity Forms active.
+	- Fixed issue where existing coupon code was not saved when editing an entry.
+    - Fixed issue with start and expiration date not taking the configured WP timezone into account.
+    - Fixed issue where translations were not being applied on the front end.
+    - Fixed issue with coupon not being applied when form failed validation.
+    - Fixed issue with coupon being marked as "undefined" after a submission when clicking the back browser button.
+
+---------------------------------------------------------------------
+Version 1.0
+	- Fixed issue with applying fixed amount coupon code with currencies other than US dollar
+    - Fixed issue where changing an existing coupon from being form specific to 'any form' resulted in an 'Invalid coupon.' message on any form other than the original.
+
+---------------------------------------------------------------------
+Version 1.0.beta1.1
+	- Added POT file
+
+---------------------------------------------------------------------

@@ -1,0 +1,46 @@
+/* =================================================================
+                             LOGIN SCREEN
+====================================================================  */
+
+
+.login {
+  position: absolute;
+  max-width: 650px;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.login__form {
+  margin-top: 4rem;
+}
+
+.login__form input  {
+    margin: 1rem;
+  }
+
+.login__form input[type=submit],
+.login__form input[type=text],
+.login__form input[type=password] {
+     width: 100%;
+}
+
+.login__remember {
+  width: 100%;
+}
+
+.login__rememberCheck {
+  float: left;
+}
+
+.login__rememberLabel {
+  float: left;
+  margin-top: .5rem;
+}
+
+
+.login__logo .logo__image {
+  max-width: 300px;
+}

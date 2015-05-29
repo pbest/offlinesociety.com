@@ -1,0 +1,31 @@
+{% extends "base.twig" %}
+
+{% block header %}
+{% endblock %}  
+
+{% block content %}
+<section class="login">
+  
+    
+    <div class="login__logo">
+        <a class="logo__link" href="{{site.url}}" rel="home">
+          <img class="logo__image" src="{{site.theme.link}}/img/logo.png">
+        </a>
+      </div>
+
+     <div class="login__form"> 
+        <form name="loginform" id="loginform" action="{{site.url}}/wp-login.php" method="post">
+        <input type="text" placeholder="Email Address" name="log">
+        <input type="password" placeholder="Password" name="pwd">
+        <div clas="login__fieldgroup">
+          <input class="login__rememberCheck" type="checkbox" name="remember" value="forever">
+          <label class="login__rememberLabel" for="remember">Remember me</label>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Sign In" name="wp-submit" id="wp-submit">
+        <input type="hidden" name="redirect_to" value="{{site.url}}/events/">
+        <a href="#">Forgot my password</a>
+        </form>
+      </div>
+   
+  </section>
+{% endblock %}

@@ -1,0 +1,46 @@
+/* Colors
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$black: #000000;
+$white: #ffffff;
+$gray: #e5e5e5;
+
+$red: #EB4147;
+$red-1: darken($red, 7);
+$red-2: lighten($red, 14);
+$red-3: lighten($red, 28);
+
+.red {
+  color: $red;
+}
+
+$yellow: #ccc841;
+$yellow-1: lighten($yellow, 7);
+$yellow-2: lighten($yellow, 14);
+$yellow-3: lighten($yellow, 28);
+
+$green: #84c664;
+$green-1: lighten($green, 7);
+$green-2: lighten($green, 14);
+$green-3: lighten($green, 28);
+
+$light-teal: #67c6b7;
+$light-teal-1: lighten($light-teal, 7);
+$light-teal-2: lighten($light-teal, 14);
+$light-teal-3: lighten($light-teal, 21);
+
+$dark-teal: #6fb29d;
+$dark-teal-1: lighten($dark-teal, 7);
+$dark-teal-2: lighten($dark-teal, 14);
+$dark-teal-3: lighten($dark-teal, 28);
+
+$light-blue: #86d3e7;
+$light-blue-1: lighten($light-blue, 7);
+$light-blue-2: lighten($light-blue, 14);
+$light-blue-3: lighten($light-blue, 28);
+
+$dark-blue: #72c5d3;
+$dark-blue-1: lighten($dark-blue, 7);
+$dark-blue-2: lighten($dark-blue, 14);
+$dark-blue-3: lighten($dark-blue, 28);
+

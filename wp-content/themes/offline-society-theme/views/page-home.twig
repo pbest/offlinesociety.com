@@ -1,0 +1,18 @@
+{% extends "base.twig" %}
+
+
+
+{% block content %}
+<section class="landing">
+  <div class="landing__block">
+      <img class="landing__logo" src="{{site.theme.link}}/img/logo.png">
+      <div class="landing__taglineBlock">
+          <h3 class="landing__tagline">{{landing_tagline}}</h3>
+          <a class="btn btn-secondary" href="#">{{landing_button_label}}</a>
+      </div>
+  </div>
+  <div class="landing__block landing__photo">
+  </div>
+   
+</section>
+{% endblock %}
