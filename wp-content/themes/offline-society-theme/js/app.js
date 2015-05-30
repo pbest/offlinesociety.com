@@ -17,6 +17,16 @@ var myRevealingModule = (function () {
   }
 
   function publicFunction() {
+
+     $("input").focus(function() {
+        var inputID = $(this).attr('id');
+        $("label[for=" + inputID + "]").addClass("curFocus");
+      });
+
+     $("input").blur(function() {
+        $(this).parent().removeClass("curFocus")
+      });
+
       publicIncrement();
   }
 
@@ -38,4 +48,6 @@ var myRevealingModule = (function () {
  
 })();
  
-myRevealingModule.start();
+ $(document).ready(function(){
+  myRevealingModule.start();
+});

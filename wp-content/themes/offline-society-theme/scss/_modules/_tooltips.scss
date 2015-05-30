@@ -1,0 +1,273 @@
+/* -------------------------------------------------------------------------
+TOOL-TIPS
+---------------------------------------------------------------------------- */
+
+  .tooltip, [data-tooltip] {
+  //position: relative;
+  display: inline-block;
+
+  /**
+   * tooltip arrow
+   */
+  /**
+   * tooltip body
+   */ }
+  .tooltip:before, .tooltip:after, [data-tooltip]:before, [data-tooltip]:after {
+    position: absolute;
+
+    font-family: map-get($bodytype, font-family);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0px;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 9998;
+    pointer-events: none;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    transition: 0.3s ease;
+    -webkit-transition-delay: 0ms;
+    -moz-transition-delay: 0ms;
+    transition-delay: 0ms; }
+  .tooltip:hover:before, .tooltip:hover:after, .tooltip:focus:before, .tooltip:focus:after, [data-tooltip]:hover:before, [data-tooltip]:hover:after, [data-tooltip]:focus:before, [data-tooltip]:focus:after {
+    visibility: visible;
+    opacity: 1; }
+  .tooltip:hover:before, .tooltip:hover:after, [data-tooltip]:hover:before, [data-tooltip]:hover:after {
+    -webkit-transition-delay: 100ms;
+    -moz-transition-delay: 100ms;
+    transition-delay: 100ms; }
+  .tooltip:before, [data-tooltip]:before {
+    content: '';
+    position: absolute;
+    background: transparent;
+    border: 6px solid transparent;
+    z-index: 9998; }
+  .tooltip:after, [data-tooltip]:after {
+    content: attr(data-tooltip);
+    background: $red;
+    color: $white;
+    //border: 1px solid $gray;
+    padding: 8px 10px;
+    font-size: 12px;
+    line-height: 12px;
+    white-space: nowrap; }
+
+/**
+ * Defines the positoning logic for the tooltips.
+ *
+ * Classes added:
+ *  1) tooltip--top
+ *  2) tooltip--bottom
+ *  3) tooltip--left
+ *  4) tooltip--right
+ */
+/**
+ * set default color for tooltip arrows
+ */
+.tooltip--top:before {
+  border-top-color: $red; }
+
+.tooltip--bottom:before {
+  border-bottom-color: $red; }
+
+.tooltip--left:before {
+  border-left-color: $red; }
+
+.tooltip--right:before {
+  border-right-color: $red; }
+
+/**
+ * top tooltip
+ */
+.tooltip--top:before {
+  margin-bottom: -12px; }
+.tooltip--top:after {
+  margin-left: -29px; }
+.tooltip--top:before, .tooltip--top:after {
+  bottom: 100%;
+  left: 35%; }
+.tooltip--top:hover:after, .tooltip--top:hover:before, .tooltip--top:focus:after, .tooltip--top:focus:before {
+  -webkit-transform: translateY(-8px);
+  -moz-transform: translateY(-8px);
+  transform: translateY(-8px); }
+
+/**
+ * bottom tooltip
+ */
+.tooltip--bottom:before {
+  margin-top: -12px; }
+.tooltip--bottom:after {
+  margin-left: -29px; }
+.tooltip--bottom:before, .tooltip--bottom:after {
+  top: 100%;
+  left: 35%; }
+.tooltip--bottom:hover:after, .tooltip--bottom:hover:before, .tooltip--bottom:focus:after, .tooltip--bottom:focus:before {
+  -webkit-transform: translateY(8px);
+  -moz-transform: translateY(8px);
+  transform: translateY(8px); }
+
+/**
+ * right tooltip
+ */
+.tooltip--right:before {
+  margin-left: -12px;
+  margin-bottom: -6px; }
+.tooltip--right:after {
+  margin-bottom: -14px; }
+.tooltip--right:before, .tooltip--right:after {
+  left: 100%;
+  bottom: 50%; }
+.tooltip--right:hover:after, .tooltip--right:hover:before, .tooltip--right:focus:after, .tooltip--right:focus:before {
+  -webkit-transform: translateX(8px);
+  -moz-transform: translateX(8px);
+  transform: translateX(8px); }
+
+/**
+ * left tooltip
+ */
+.tooltip--left:before {
+  margin-right: -12px;
+  margin-bottom: -6px; }
+.tooltip--left:after {
+  margin-bottom: -14px; }
+.tooltip--left:before, .tooltip--left:after {
+  right: 100%;
+  bottom: 50%; }
+.tooltip--left:hover:after, .tooltip--left:hover:before, .tooltip--left:focus:after, .tooltip--left:focus:before {
+  -webkit-transform: translateX(-8px);
+  -moz-transform: translateX(-8px);
+  transform: translateX(-8px); }
+
+/**
+ *
+ * Contains tooltips of various types based on color differences.
+ *
+ * Classes added:
+ *  1) tooltip--error
+ *  2) tooltip--warning
+ *  3) tooltip--info
+ *  4) tooltip--success
+ *
+ */
+/**
+ * Error
+ */
+.tooltip--error:after {
+  background-color: #ee5f49;
+  color: #fff; }
+.tooltip--error.tooltip--top:before {
+  border-top-color: #ee5f49; }
+.tooltip--error.tooltip--bottom:before {
+  border-bottom-color: #ee5f49; }
+.tooltip--error.tooltip--left:before {
+  border-left-color: #ee5f49; }
+.tooltip--error.tooltip--right:before {
+  border-right-color: #ee5f49; }
+
+/**
+ * Warning
+ */
+.tooltip--warning:after {
+  background-color: rgba(243, 165, 27, 1);
+  color: #fff; }
+.tooltip--warning.tooltip--top:before {
+  border-top-color: rgba(243, 165, 27, 1); }
+.tooltip--warning.tooltip--bottom:before {
+  border-bottom-color: rgba(243, 165, 27, 1); }
+.tooltip--warning.tooltip--left:before {
+  border-left-color: rgba(243, 165, 27, 1); }
+.tooltip--warning.tooltip--right:before {
+  border-right-color: rgba(243, 165, 27, 1); }
+
+/**
+ * Info
+ */
+.tooltip--info:after {
+  background-color: #2078AA;
+  color: #fff; }
+.tooltip--info.tooltip--top:before {
+  border-top-color: #2078AA; }
+.tooltip--info.tooltip--bottom:before {
+  border-bottom-color: #2078AA; }
+.tooltip--info.tooltip--left:before {
+  border-left-color: #2078AA; }
+.tooltip--info.tooltip--right:before {
+  border-right-color: #2078AA; }
+
+/**
+ * Success
+ */
+.tooltip--success:after {
+  background-color: rgba(57,178,93,1);
+  color: #fff; }
+.tooltip--success.tooltip--top:before {
+  border-top-color: rgba(57,178,93,1); }
+.tooltip--success.tooltip--bottom:before {
+  border-bottom-color: rgba(57,178,93,1); }
+.tooltip--success.tooltip--left:before {
+  border-left-color: rgba(57,178,93,1); }
+.tooltip--success.tooltip--right:before {
+  border-right-color: rgba(57,178,93,1); }
+
+/**
+ * source: hint-always.scss
+ *
+ * Defines a persisted tooltip which shows always.
+ *
+ * Classes added:
+ *  1) hint--always
+ *
+ */
+.tooltip--always:after, .tooltip--always:before {
+  opacity: 1;
+  visibility: visible; }
+.tooltip--always.tooltip--top:after, .tooltip--always.tooltip--top:before {
+  -webkit-transform: translateY(-8px);
+  -moz-transform: translateY(-8px);
+  transform: translateY(-8px); }
+.tooltip--always.tooltip--bottom:after, .tooltip--always.tooltip--bottom:before {
+  -webkit-transform: translateY(8px);
+  -moz-transform: translateY(8px);
+  transform: translateY(8px); }
+.tooltip--always.tooltip--left:after, .tooltip--always.tooltip--left:before {
+  -webkit-transform: translateX(-8px);
+  -moz-transform: translateX(-8px);
+  transform: translateX(-8px); }
+.tooltip--always.tooltip--right:after, .tooltip--always.tooltip--right:before {
+  -webkit-transform: translateX(8px);
+  -moz-transform: translateX(8px);
+  transform: translateX(8px); }
+
+/**
+ *
+ * Defines rounded corner tooltips.
+ *
+ * Classes added:
+ *  1) tooltip--rounded
+ *
+ */
+.tooltip--rounded:after {
+  border-radius: 4px; }
+
+/**
+ * source: hint-effects.scss
+ *
+ * Defines various transition effects for the tooltips.
+ *
+ * Classes added:
+ *  1) tooltip--no-animate
+ *  2) tooltip--bounce
+ *
+ */
+.tooltip--no-animate:before, .tooltip--no-animate:after {
+  -webkit-transition-duration: 0ms;
+  -moz-transition-duration: 0ms;
+  transition-duration: 0ms; }
+
+.tooltip--bounce:before, .tooltip--bounce:after {
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  -moz-transition: opacity 0.3s ease, visibility 0.3s ease, -moz-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24); }

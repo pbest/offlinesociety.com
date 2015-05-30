@@ -11,10 +11,18 @@
 
 $context = Timber::get_context();
 
-// If the user is logged in we should send that object to our templates
+/*
+CHECK FOR USER STATUS
+-------------------------------------- */
 if ( is_user_logged_in() ) {
-  $user = new TimberUser();
-  
+$user = new TimberUser();  
+$user_roles = $current_user->roles;
+$user_role = array_shift($user_roles);
+//echo '<strong>Current User Role</strong>: ' . $user_role;
+// Current roles:
+// role = user 
+// role = member
+// rol = administrator
 
   $avatar = get_avatar( $current_user->user_email, 64 );
   $avatar_url = preg_match("/src='(.*?)'/i", $avatar, $matches_url);
@@ -33,7 +41,9 @@ if ( is_user_logged_in() ) {
   //$user['avatar_url'] = $matches[1];
   $context['avatar'] = $avatar;
   $context['logout_url'] = $logout_link;
+  $context['user_role'] = $user_role;
   $context['user'] = $user;
 }
+//--------------------------------------
 
 Timber::render( '404.twig', $context );

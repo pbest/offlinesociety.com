@@ -10,17 +10,18 @@ $context['post'] = $post;
 $title = get_field('join_title');
 $context['join_title'] = $title;
 
-
-// If the user is logged in we should send that object to our templates
+/*
+CHECK FOR USER STATUS
+-------------------------------------- */
 if ( is_user_logged_in() ) {
-  $user = new TimberUser();
-  //echo "<pre>";
-  //var_dump($user);
-  //echo "</pre>";
+$user = new TimberUser();  
 $user_roles = $current_user->roles;
 $user_role = array_shift($user_roles);
 //echo '<strong>Current User Role</strong>: ' . $user_role;
- 
+// Current roles:
+// role = user 
+// role = member
+// rol = administrator
 
   $avatar = get_avatar( $current_user->user_email, 64 );
   $avatar_url = preg_match("/src='(.*?)'/i", $avatar, $matches_url);
@@ -42,9 +43,7 @@ $user_role = array_shift($user_roles);
   $context['user_role'] = $user_role;
   $context['user'] = $user;
 }
-
-
-
+//--------------------------------------
 
 
 Timber::render( array( 'page-join.twig', 'page.twig' ), $context );

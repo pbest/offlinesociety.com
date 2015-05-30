@@ -2,10 +2,80 @@
   max-width: 900px;
 }
 
-#gform_fields_1 {
- // margin-left: 6%;
+#gform_wrapper_1 {
+  margin-top: 2.5rem;
+}
+
+@-webkit-keyframes fadeDown {
+  0%   { 
+    opacity: 0;
+    -webkit-transform: translateY(-1rem);
+    -moz-transform: translateY(-1rem);
+     transform: translateY(-1rem);  
+  }
+  100% { 
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+     transform: translateY(0px); 
+  }
+}
+
+@-moz-keyframes fadeDown {
+  0%   { 
+    opacity: 0;
+    -webkit-transform: translateY(-1rem);
+    -moz-transform: translateY(-1rem);
+     transform: translateY(-1rem);  
+  }
+  100% { 
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+     transform: translateY(0px);  
+  }
+}
+
+@-o-keyframes fadeDown {
+  0%   { 
+    opacity: 0;
+    -webkit-transform: translateY(-1rem);
+    -moz-transform: translateY(-1rem);
+     transform: translateY(-1rem); 
+  }
+  100% { 
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+     transform: translateY(0px);   
+  }
+}
+
+@keyframes fadeDown {
+  0%   { 
+    opacity: 0;
+    -webkit-transform: translateY(-1rem);
+    -moz-transform: translateY(-1rem);
+     transform: translateY(-1rem); 
+  }
+  100% { 
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+     transform: translateY(0px);  
+  }
+}
+
+.animatedFormWrapper {
+  -webkit-animation: fadeDown 0.5s ease-out; /* Safari 4+ */
+  -moz-animation:    fadeDown 0.5s ease-out; /* Fx 5+ */
+  -o-animation:      fadeDown 0.5s ease-out; /* Opera 12+ */
+  animation:         fadeDown 0.5s ease-out; /* IE 10+, Fx 29+ */
+}
 
 
+#gform_1 {
+  max-width: 700px;
 }
 
 .gform_fields {
@@ -15,54 +85,15 @@
   //padding-bottom: 3rem;
 }
 
-.gform_fields input {
- // width: 100%;
-}
 
-.gfield_label {
-  //display: none;
-}
-
-.ginput_container label {
-  //display: none;
-}
-
-.gfield {
- // @include span(100);
-  //@include grid-nested;
-}
 
 #gform_submit_button_1 {
     //float: right;
     margin-right: 2.5%;
-    margin-left: 5%;
-    width: 90%;
+    //margin-left: 5%;
+    width: 100%;
   }
 
-.ginput_container {
- // @include span(100);
- // @include grid-nested;
-  //padding-top: 0;
-  //padding-bottom: 0;
-}
-
-.name_first, .name_last {
-  float: left;
-  width: 50%;
-  //@include span(50);
-
-   label {
-    display: none;
-   }
-}
-
-.name_first {
-  padding-right: 50px;
-}
-
-.name-last {
-  padding-left: 50px;
-}
 
 .form__50 .ginput_container {
      @include grid-nested;
@@ -97,6 +128,16 @@
   }
 }
 
+.gfield {
+  margin-bottom: 3rem;
+  overflow: auto;
+}
+
+.gform_hidden {
+  margin: 0;
+  padding: 0;
+}
+
 .gfield-50 {
   float: left;
   width: 50%;
@@ -108,8 +149,39 @@
   margin-top: 4rem;
 }
 
-.gfield_label {
+.gfield_required {
+  display: none; 
+}
+
+.ginput_container .large {
+  width: 100%;
+}
+
+.label-float {
+  position: relative;
+
+  .ginput_container span {
+    position: relative;
+  }
+}
+
+.label-float label {
+  @include transition(all, 0.2s, ease-in-out);
+  position: absolute;
+  top: .75rem;
+  left: 2rem;
+  //opacity: .5;
+  color: $red;
+  text-transform: uppercase;
   font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+label.curFocus {
+  @include transition(all, 0.2s, ease-in-out);
+  color: $red !important;
+  //opacity: 1;
 }
 
 /*
@@ -119,6 +191,61 @@ MEMBERSHIP APPLICATION FORM
 #gform_wrapper_4 {
   padding-top: 2rem;
 }
+
+#gform_4 .gform_body {
+  width: 76%;
+}
+
+/* field specific UI hacks
+------------------------ */
+.name_first input, .name_last input {
+  width: 100%;
+}
+
+.name_first, .name_last {
+  float: left;
+  width: 50%;
+  //@include span(50);
+}
+
+label.gfield_label[for=input_1_3_3],label.gfield_label[for=input_1_2] {
+  display: none;
+}
+
+.name_first {
+  padding-right: 2rem;
+}
+
+.name-last {
+  padding-left: 50px;
+}
+
+.gfield-50 .datepicker {
+  padding-right: 50px;
+}
+
+.datepicker {
+  width: 100%;
+}
+
+.ginput_left, .ginput_right {
+  float: left;
+  width: 50%;
+}
+
+.ginput_left  {
+  padding-right: 2rem;
+  input {
+    width: 100%;
+  }
+}
+
+.ginput_right input {
+  width: 100%;
+}
+
+
+// ------------------------ 
 
 .gf_page_steps {
   width: 100%;

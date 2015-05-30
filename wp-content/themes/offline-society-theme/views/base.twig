@@ -45,28 +45,41 @@
 
 						<!-- Right-side Menu (CTA)
     				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    				{% block cta %} 
-              {% if user %}
+    				{% block cta %}  
+              {% if user and user_role == "user" %}
+              {# User / Non-Member : we're just hooking up #}
 								<li class="cta usr">
 								  <a class="usr__btn btn btn-transparent" href="#">
 										<img class="usr__avatar" src="{{avatar.img_url}}">
 										<span class="usr__name">{{user.name}}</span>
 										<i class="usr__menuIcon ss-icon ss-navigatedown red"></i>
 							  	</a>
-
+							  	<ul class="usr__dropdown">
+							  	  <li class="usr__dropdownItem"><a href="#">Membership Application</a>
+							  		<li class="usr__dropdownItem"><a href="#">Account</a>
+							  		<li class="usr__dropdownItem"><a href="{{logout_url}}">Logout</a>
+							  	</ul>
+								</li>
+								<li class="cta"><a class="btn btn-primary btn-join tooltop tooltip--bottom" data-tooltip="You haven't completed your Offline Society Membership Application!" href="{{site.url}}/join/">Join US</a></li>
+							{% elseif user and (user_role == "member" or user_role == "administrator") %}	
+							{# User / Member : we're like totally Facebook official #}
+              	<li class="cta usr">
+								  <a class="usr__btn btn btn-transparent" href="#">
+										<img class="usr__avatar" src="{{avatar.img_url}}">
+										<span class="usr__name">{{user.name}}</span>
+										<i class="usr__menuIcon ss-icon ss-navigatedown red"></i>
+							  	</a>
 							  	<ul class="usr__dropdown">
 							  	  <li class="usr__dropdownItem"><a href="#">My Events</a>
 							  		<li class="usr__dropdownItem"><a href="#">Edit Profile</a>
 							  		<li class="usr__dropdownItem"><a href="#">Account</a>
 							  		<li class="usr__dropdownItem"><a href="{{logout_url}}">Logout</a>
 							  	</ul>
-								</li>
-								{% if user.wp_user_level != "0" %}
-              		<li class="cta"><a class="btn btn-primary" href="{{site.url}}/join/">Join US</a></li>
-              	{% endif %}
+								</li>	
 							{% else %}
-								<li class="cta"><a class="btn btn-primary" href="{{site.url}}/join/">Join US</a></li>
-								<li class="cta"><a class="btn btn-secondary" href="{{site.url}}/login/">Sign In</a></li>
+							{# Non-User : you mean nothing to me! #}
+								<li class="cta"><a class="btn btn-primary btn-join" href="{{site.url}}/join/">Join US</a></li>
+								<li class="cta"><a class="btn btn-secondary btn-signin" href="{{site.url}}/login/">Sign In</a></li>
 							{% endif %}
 						{% endblock %}	
 

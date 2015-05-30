@@ -724,14 +724,18 @@ select {
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   font-size: 1rem;
-  height: 38px;
-  padding: 2rem;
+  height: 6rem;
+  padding: 3.5rem 2rem;
   /* The 6px vertically centers text on FF, ignored by Webkit */
+  padding-bottom: 2rem;
   background-color: #F7F7F7;
   border: 2px solid #F7F7F7;
   border-radius: 0px;
   box-shadow: none;
   box-sizing: border-box; }
+
+::-webkit-input-placeholder {
+  color: #D9D1D1; }
 
 /* Removes awkward default styles on some inputs for iOS */
 input[type="email"],
@@ -1048,28 +1052,385 @@ User Button and Dropdown for logged in users
     width: 100%;
     height: 100%; }
 
+/* -------------------------------------------------------------------------
+TOOL-TIPS
+---------------------------------------------------------------------------- */
+.tooltip, [data-tooltip] {
+  display: inline-block;
+  /**
+   * tooltip arrow
+   */
+  /**
+   * tooltip body
+   */ }
+
+.tooltip:before, .tooltip:after, [data-tooltip]:before, [data-tooltip]:after {
+  position: absolute;
+  font-family: "Brandon Grotesque";
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0px;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 9998;
+  pointer-events: none;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  transition: 0.3s ease;
+  -webkit-transition-delay: 0ms;
+  -moz-transition-delay: 0ms;
+  transition-delay: 0ms; }
+
+.tooltip:hover:before, .tooltip:hover:after, .tooltip:focus:before, .tooltip:focus:after, [data-tooltip]:hover:before, [data-tooltip]:hover:after, [data-tooltip]:focus:before, [data-tooltip]:focus:after {
+  visibility: visible;
+  opacity: 1; }
+
+.tooltip:hover:before, .tooltip:hover:after, [data-tooltip]:hover:before, [data-tooltip]:hover:after {
+  -webkit-transition-delay: 100ms;
+  -moz-transition-delay: 100ms;
+  transition-delay: 100ms; }
+
+.tooltip:before, [data-tooltip]:before {
+  content: '';
+  position: absolute;
+  background: transparent;
+  border: 6px solid transparent;
+  z-index: 9998; }
+
+.tooltip:after, [data-tooltip]:after {
+  content: attr(data-tooltip);
+  background: #EB4147;
+  color: #FFFFFF;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 12px;
+  white-space: nowrap; }
+
+/**
+ * Defines the positoning logic for the tooltips.
+ *
+ * Classes added:
+ *  1) tooltip--top
+ *  2) tooltip--bottom
+ *  3) tooltip--left
+ *  4) tooltip--right
+ */
+/**
+ * set default color for tooltip arrows
+ */
+.tooltip--top:before {
+  border-top-color: #EB4147; }
+
+.tooltip--bottom:before {
+  border-bottom-color: #EB4147; }
+
+.tooltip--left:before {
+  border-left-color: #EB4147; }
+
+.tooltip--right:before {
+  border-right-color: #EB4147; }
+
+/**
+ * top tooltip
+ */
+.tooltip--top:before {
+  margin-bottom: -12px; }
+
+.tooltip--top:after {
+  margin-left: -29px; }
+
+.tooltip--top:before, .tooltip--top:after {
+  bottom: 100%;
+  left: 35%; }
+
+.tooltip--top:hover:after, .tooltip--top:hover:before, .tooltip--top:focus:after, .tooltip--top:focus:before {
+  -webkit-transform: translateY(-8px);
+  -moz-transform: translateY(-8px);
+  transform: translateY(-8px); }
+
+/**
+ * bottom tooltip
+ */
+.tooltip--bottom:before {
+  margin-top: -12px; }
+
+.tooltip--bottom:after {
+  margin-left: -29px; }
+
+.tooltip--bottom:before, .tooltip--bottom:after {
+  top: 100%;
+  left: 35%; }
+
+.tooltip--bottom:hover:after, .tooltip--bottom:hover:before, .tooltip--bottom:focus:after, .tooltip--bottom:focus:before {
+  -webkit-transform: translateY(8px);
+  -moz-transform: translateY(8px);
+  transform: translateY(8px); }
+
+/**
+ * right tooltip
+ */
+.tooltip--right:before {
+  margin-left: -12px;
+  margin-bottom: -6px; }
+
+.tooltip--right:after {
+  margin-bottom: -14px; }
+
+.tooltip--right:before, .tooltip--right:after {
+  left: 100%;
+  bottom: 50%; }
+
+.tooltip--right:hover:after, .tooltip--right:hover:before, .tooltip--right:focus:after, .tooltip--right:focus:before {
+  -webkit-transform: translateX(8px);
+  -moz-transform: translateX(8px);
+  transform: translateX(8px); }
+
+/**
+ * left tooltip
+ */
+.tooltip--left:before {
+  margin-right: -12px;
+  margin-bottom: -6px; }
+
+.tooltip--left:after {
+  margin-bottom: -14px; }
+
+.tooltip--left:before, .tooltip--left:after {
+  right: 100%;
+  bottom: 50%; }
+
+.tooltip--left:hover:after, .tooltip--left:hover:before, .tooltip--left:focus:after, .tooltip--left:focus:before {
+  -webkit-transform: translateX(-8px);
+  -moz-transform: translateX(-8px);
+  transform: translateX(-8px); }
+
+/**
+ *
+ * Contains tooltips of various types based on color differences.
+ *
+ * Classes added:
+ *  1) tooltip--error
+ *  2) tooltip--warning
+ *  3) tooltip--info
+ *  4) tooltip--success
+ *
+ */
+/**
+ * Error
+ */
+.tooltip--error:after {
+  background-color: #ee5f49;
+  color: #fff; }
+
+.tooltip--error.tooltip--top:before {
+  border-top-color: #ee5f49; }
+
+.tooltip--error.tooltip--bottom:before {
+  border-bottom-color: #ee5f49; }
+
+.tooltip--error.tooltip--left:before {
+  border-left-color: #ee5f49; }
+
+.tooltip--error.tooltip--right:before {
+  border-right-color: #ee5f49; }
+
+/**
+ * Warning
+ */
+.tooltip--warning:after {
+  background-color: #f3a51b;
+  color: #fff; }
+
+.tooltip--warning.tooltip--top:before {
+  border-top-color: #f3a51b; }
+
+.tooltip--warning.tooltip--bottom:before {
+  border-bottom-color: #f3a51b; }
+
+.tooltip--warning.tooltip--left:before {
+  border-left-color: #f3a51b; }
+
+.tooltip--warning.tooltip--right:before {
+  border-right-color: #f3a51b; }
+
+/**
+ * Info
+ */
+.tooltip--info:after {
+  background-color: #2078AA;
+  color: #fff; }
+
+.tooltip--info.tooltip--top:before {
+  border-top-color: #2078AA; }
+
+.tooltip--info.tooltip--bottom:before {
+  border-bottom-color: #2078AA; }
+
+.tooltip--info.tooltip--left:before {
+  border-left-color: #2078AA; }
+
+.tooltip--info.tooltip--right:before {
+  border-right-color: #2078AA; }
+
+/**
+ * Success
+ */
+.tooltip--success:after {
+  background-color: #39b25d;
+  color: #fff; }
+
+.tooltip--success.tooltip--top:before {
+  border-top-color: #39b25d; }
+
+.tooltip--success.tooltip--bottom:before {
+  border-bottom-color: #39b25d; }
+
+.tooltip--success.tooltip--left:before {
+  border-left-color: #39b25d; }
+
+.tooltip--success.tooltip--right:before {
+  border-right-color: #39b25d; }
+
+/**
+ * source: hint-always.scss
+ *
+ * Defines a persisted tooltip which shows always.
+ *
+ * Classes added:
+ *  1) hint--always
+ *
+ */
+.tooltip--always:after, .tooltip--always:before {
+  opacity: 1;
+  visibility: visible; }
+
+.tooltip--always.tooltip--top:after, .tooltip--always.tooltip--top:before {
+  -webkit-transform: translateY(-8px);
+  -moz-transform: translateY(-8px);
+  transform: translateY(-8px); }
+
+.tooltip--always.tooltip--bottom:after, .tooltip--always.tooltip--bottom:before {
+  -webkit-transform: translateY(8px);
+  -moz-transform: translateY(8px);
+  transform: translateY(8px); }
+
+.tooltip--always.tooltip--left:after, .tooltip--always.tooltip--left:before {
+  -webkit-transform: translateX(-8px);
+  -moz-transform: translateX(-8px);
+  transform: translateX(-8px); }
+
+.tooltip--always.tooltip--right:after, .tooltip--always.tooltip--right:before {
+  -webkit-transform: translateX(8px);
+  -moz-transform: translateX(8px);
+  transform: translateX(8px); }
+
+/**
+ *
+ * Defines rounded corner tooltips.
+ *
+ * Classes added:
+ *  1) tooltip--rounded
+ *
+ */
+.tooltip--rounded:after {
+  border-radius: 4px; }
+
+/**
+ * source: hint-effects.scss
+ *
+ * Defines various transition effects for the tooltips.
+ *
+ * Classes added:
+ *  1) tooltip--no-animate
+ *  2) tooltip--bounce
+ *
+ */
+.tooltip--no-animate:before, .tooltip--no-animate:after {
+  -webkit-transition-duration: 0ms;
+  -moz-transition-duration: 0ms;
+  transition-duration: 0ms; }
+
+.tooltip--bounce:before, .tooltip--bounce:after {
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  -moz-transition: opacity 0.3s ease, visibility 0.3s ease, -moz-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24); }
+
 .gform_body, .gform_footer {
   max-width: 900px; }
+
+#gform_wrapper_1 {
+  margin-top: 2.5rem; }
+
+@-webkit-keyframes fadeDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-1rem);
+    -moz-transform: translateY(-1rem);
+    transform: translateY(-1rem); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    transform: translateY(0px); } }
+
+@-moz-keyframes fadeDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-1rem);
+    -moz-transform: translateY(-1rem);
+    transform: translateY(-1rem); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    transform: translateY(0px); } }
+
+@-o-keyframes fadeDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-1rem);
+    -moz-transform: translateY(-1rem);
+    transform: translateY(-1rem); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    transform: translateY(0px); } }
+
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-1rem);
+    -moz-transform: translateY(-1rem);
+    transform: translateY(-1rem); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    transform: translateY(0px); } }
+
+.animatedFormWrapper {
+  -webkit-animation: fadeDown 0.5s ease-out;
+  /* Safari 4+ */
+  -moz-animation: fadeDown 0.5s ease-out;
+  /* Fx 5+ */
+  -o-animation: fadeDown 0.5s ease-out;
+  /* Opera 12+ */
+  animation: fadeDown 0.5s ease-out;
+  /* IE 10+, Fx 29+ */ }
+
+#gform_1 {
+  max-width: 700px; }
 
 .gform_fields {
   list-style: none; }
 
 #gform_submit_button_1 {
   margin-right: 2.5%;
-  margin-left: 5%;
-  width: 90%; }
-
-.name_first, .name_last {
-  float: left;
-  width: 50%; }
-  .name_first label, .name_last label {
-    display: none; }
-
-.name_first {
-  padding-right: 50px; }
-
-.name-last {
-  padding-left: 50px; }
+  width: 100%; }
 
 .form__50 .ginput_container {
   padding-left: 0;
@@ -1100,6 +1461,14 @@ User Button and Dropdown for logged in users
   .gfield_checkbox li label, .gfield_checkbox li input, .gfield_radio li label, .gfield_radio li input {
     float: left; }
 
+.gfield {
+  margin-bottom: 3rem;
+  overflow: auto; }
+
+.gform_hidden {
+  margin: 0;
+  padding: 0; }
+
 .gfield-50 {
   float: left;
   width: 50%; }
@@ -1109,8 +1478,39 @@ User Button and Dropdown for logged in users
   clear: both;
   margin-top: 4rem; }
 
-.gfield_label {
-  font-weight: 600; }
+.gfield_required {
+  display: none; }
+
+.ginput_container .large {
+  width: 100%; }
+
+.label-float {
+  position: relative; }
+  .label-float .ginput_container span {
+    position: relative; }
+
+.label-float label {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  top: .75rem;
+  left: 2rem;
+  color: #EB4147;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 1px; }
+
+label.curFocus {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: #EB4147 !important; }
 
 /*
 -------------------------------------------------
@@ -1118,6 +1518,45 @@ MEMBERSHIP APPLICATION FORM
 ------------------------------------------------- */
 #gform_wrapper_4 {
   padding-top: 2rem; }
+
+#gform_4 .gform_body {
+  width: 76%; }
+
+/* field specific UI hacks
+------------------------ */
+.name_first input, .name_last input {
+  width: 100%; }
+
+.name_first, .name_last {
+  float: left;
+  width: 50%; }
+
+label.gfield_label[for=input_1_3_3], label.gfield_label[for=input_1_2] {
+  display: none; }
+
+.name_first {
+  padding-right: 2rem; }
+
+.name-last {
+  padding-left: 50px; }
+
+.gfield-50 .datepicker {
+  padding-right: 50px; }
+
+.datepicker {
+  width: 100%; }
+
+.ginput_left, .ginput_right {
+  float: left;
+  width: 50%; }
+
+.ginput_left {
+  padding-right: 2rem; }
+  .ginput_left input {
+    width: 100%; }
+
+.ginput_right input {
+  width: 100%; }
 
 .gf_page_steps {
   width: 100%;
@@ -1211,6 +1650,9 @@ MEMBERSHIP APPLICATION FORM
   display: inline;
   opacity: 1; }
 
+.page-template-template-join .btn-join {
+  display: none; }
+
 /* =================================================================
                              LOGIN SCREEN
 ====================================================================  */
@@ -1245,7 +1687,8 @@ MEMBERSHIP APPLICATION FORM
   margin-top: .5rem; }
 
 .login__logo .logo__image {
-  max-width: 300px; }
+  max-width: 300px;
+  padding-top: 80px; }
 
 /* =================================================================
                              HOMEPAGE
@@ -1328,7 +1771,6 @@ MEMBERSHIP APPLICATION FORM
       margin-left: 17%; } }
 
 .article-h1 {
-  margin-left: 5%;
   padding-right: 5%; }
 
 .footer {

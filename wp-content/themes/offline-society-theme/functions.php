@@ -1,6 +1,14 @@
 <?php
 
 /*
+Gravity forms load scripts in footer
+------------------------------------- */
+add_filter("gform_init_scripts_footer", "init_scripts");
+function init_scripts() {
+return true;
+}
+
+/*
 DISABLE COMMENTS
 ------------------------------------- */
 include('functions/disable-comments.php');
@@ -63,7 +71,9 @@ function pi_gravity_registration_autologin( $user_id, $user_config, $entry, $pas
     ) );
 }
 
-
+/*
+Timber StarterSite Functions
+------------------------------------- */
 class StarterSite extends TimberSite {
 
 	function __construct() {
@@ -86,12 +96,10 @@ class StarterSite extends TimberSite {
 	}
 
 	function add_to_context( $context ) {
-		
-		$context['stuff'] = 'I am a value set in your functions.php file';
-		$context['notes'] = 'These values are available everytime you call Timber::get_context();';
+		//$context['stuff'] = 'I am a value set in your functions.php file';
+		//$context['notes'] = 'These values are available everytime you call Timber::get_context();';
 		$context['menu'] = new TimberMenu();
 		$context['site'] = $this;
-
 		
 		return $context;
 	}
@@ -101,8 +109,10 @@ class StarterSite extends TimberSite {
 		$twig->addExtension( new Twig_Extension_StringLoader() );
 		$twig->addFilter( 'myfoo', new Twig_Filter_Function( 'myfoo' ) );
 
+    // Pass Gravity Form function through to Twig
+    // --------------------------------------------
 		$gravityfunction = new Twig_SimpleFunction('displaygform', function ($id) {
-        $form = gravity_form($id, false, false, false, '', false );
+        $form = gravity_form($id, false, false, false, '', $ajax=false );
         return $form;
       });
       $twig->addFunction($gravityfunction);
@@ -110,11 +120,19 @@ class StarterSite extends TimberSite {
 		return $twig;
 	}
 
+	function my_router() {
+		Timber::add_route('/user/:userid', function($params){
+		    //$query = 'posts_per_page=3&post_type='.$params['name'];
+		    Timber::load_template('template-home.php');
+		});
+
+	}
+
 }
 
-new StarterSite();
+new StarterSite();  // init classs
 
-function myfoo( $text ) {
-	$text .= ' bar!';
-	return $text;
-}
+//function myfoo( $text ) {
+//	$text .= ' bar!';
+//	return $text;
+//}

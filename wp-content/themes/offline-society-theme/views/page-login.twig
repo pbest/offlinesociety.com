@@ -6,7 +6,7 @@
 {% block content %}
 <section class="login">
   
-    
+    <div class="animatedFormWrapper">
     <div class="login__logo">
         <a class="logo__link" href="{{site.url}}" rel="home">
           <img class="logo__image" src="{{site.theme.link}}/img/logo.png">
@@ -22,10 +22,11 @@
           <label class="login__rememberLabel" for="remember">Remember me</label>
         </div>
         <input class="btn btn-primary" type="submit" value="Sign In" name="wp-submit" id="wp-submit">
-        <input type="hidden" name="redirect_to" value="{{site.url}}/events/">
+        <input type="hidden" name="redirect_to" value="{{site.url}}/">
         <a href="#">Forgot my password</a>
         </form>
       </div>
+   </div>
    
   </section>
 {% endblock %}

@@ -12,7 +12,7 @@ $company_name = "The Offline Society";
 $url = "offlinesociety.com";
 
 // LOGO
-$logo_url = "http://s9.postimg.org/siysec0kv/logo_2x.png";
+$logo_url = "http://s21.postimg.org/ftmrbjetj/logo_2x.png";
 $logo_width = "176";
 $logo_height = "107";
 
@@ -20,7 +20,7 @@ $logo_height = "107";
 $signature_width = 340;
 $text_col_width = $signature_width / 2;
 $text_color = "#000000";
-$highlight_color = "#fb0000";
+$highlight_color = "#EB4147";
 $font_stack = "'Brandon Grotesque', 'Helvetica Neue',Helvetica, sans-serif";
 $font_style = "normal";
 $font_size = "14px";
