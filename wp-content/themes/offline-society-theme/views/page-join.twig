@@ -1,6 +1,10 @@
 {% extends "base.twig" %}
 
-
+{% block nav %}
+{% if user and user_role == "user" %} 
+			<li class="pull-left"><h1>Membership Application</h1></li>
+{% endif %}
+{% endblock %}
 
 {% block content %}
 	{% if user %}
@@ -13,7 +17,6 @@
 	  {% else %} 
 	      {# User is not a member, show them the application #}
 				<div class="content-wrapper">
-				<h1>Membership Application</h1>
 				{{ displaygform(4) }}
 				</div>
     {% endif %}

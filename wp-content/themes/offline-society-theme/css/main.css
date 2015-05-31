@@ -90,6 +90,9 @@ SAMPLE CSS OUTPUT:
 .pull-right {
   float: right; }
 
+.pull-left {
+  float: left; }
+
 /* Colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .red {
@@ -724,14 +727,15 @@ select {
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   font-size: 1rem;
-  height: 6rem;
-  padding: 3.5rem 2rem;
+  height: 4rem;
+  padding: 3.3rem 2rem;
   /* The 6px vertically centers text on FF, ignored by Webkit */
-  padding-bottom: 2rem;
+  padding-bottom: 1.7rem;
   background-color: #F7F7F7;
   border: 2px solid #F7F7F7;
   border-radius: 0px;
   box-shadow: none;
+  color: #7d7d7d;
   box-sizing: border-box; }
 
 ::-webkit-input-placeholder {
@@ -799,7 +803,8 @@ label > .label-body {
 button,
 input[type="submit"],
 input[type="reset"],
-input[type="button"] {
+input[type="button"],
+.gform_save_link {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
@@ -852,6 +857,12 @@ input[type="button"].btn-primary {
   color: #FFFFFF;
   background-color: #EB4147;
   border-color: #EB4147; }
+
+.gform_next_button {
+  color: #FFFFFF !important;
+  background-color: #EB4147 !important;
+  border-color: #EB4147 !important;
+  margin-right: 20px; }
 
 .btn.btn-primary:hover,
 button.btn-primary:hover,
@@ -946,6 +957,8 @@ Main Menu
 ---------------------------------------------- */
 .nav {
   list-style: none; }
+  .nav h1 {
+    padding-top: 1.2rem; }
 
 .nav-item {
   display: inline-block;
@@ -989,7 +1002,8 @@ User Button and Dropdown for logged in users
   z-index: 200; }
 
 .usr__btn {
-  width: 100%; }
+  width: 100%;
+  padding-top: 2.2rem; }
 
 .usr:hover .usr__menuIcon {
   -webkit-transition: all 0.2s ease-in-out;
@@ -1462,7 +1476,7 @@ TOOL-TIPS
     float: left; }
 
 .gfield {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   overflow: auto; }
 
 .gform_hidden {
@@ -1516,11 +1530,10 @@ label.curFocus {
 -------------------------------------------------
 MEMBERSHIP APPLICATION FORM
 ------------------------------------------------- */
-#gform_wrapper_4 {
-  padding-top: 2rem; }
-
 #gform_4 .gform_body {
-  width: 76%; }
+  width: 74%;
+  margin-top: 1rem;
+  padding-bottom: 1rem; }
 
 /* field specific UI hacks
 ------------------------ */
@@ -1559,7 +1572,7 @@ label.gfield_label[for=input_1_3_3], label.gfield_label[for=input_1_2] {
   width: 100%; }
 
 .gf_page_steps {
-  width: 100%;
+  width: 96%;
   max-width: 1240px; }
 
 .gf_step_number {

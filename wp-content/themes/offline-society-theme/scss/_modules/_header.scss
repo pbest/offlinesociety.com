@@ -40,6 +40,10 @@ Main Menu
 
 .nav {
   list-style: none;
+
+  h1 {
+    padding-top: 1.2rem;
+  }
 }
 
 .nav-item {
@@ -91,9 +95,8 @@ User Button and Dropdown for logged in users
 }
 
 .usr__btn {
-  //margin-right: 0;
-  //padding-right: 0;
   width: 100%;
+  padding-top: 2.2rem;
 }
 
 .usr:hover {

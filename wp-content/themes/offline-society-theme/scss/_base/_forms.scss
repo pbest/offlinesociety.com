@@ -12,13 +12,14 @@ select {
   @include type__default;
   @include transition(all, 0.2s, ease-in-out);
   font-size: 1rem;
-  height: 6rem;
-  padding: 3.5rem 2rem; /* The 6px vertically centers text on FF, ignored by Webkit */
-  padding-bottom: 2rem;
+  height: 4rem;
+  padding: 3.3rem 2rem; /* The 6px vertically centers text on FF, ignored by Webkit */
+  padding-bottom: 1.7rem;
   background-color: #F7F7F7;
   border: 2px solid #F7F7F7;
   border-radius: 0px;
   box-shadow: none;
+  color: $dark-gray;
   box-sizing: border-box; 
 }
 

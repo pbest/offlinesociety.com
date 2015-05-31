@@ -129,7 +129,7 @@
 }
 
 .gfield {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   overflow: auto;
 }
 
@@ -189,11 +189,13 @@ label.curFocus {
 MEMBERSHIP APPLICATION FORM
 ------------------------------------------------- */
 #gform_wrapper_4 {
-  padding-top: 2rem;
+  //margin-top: -1rem;
 }
 
 #gform_4 .gform_body {
-  width: 76%;
+  width: 74%;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 /* field specific UI hacks
@@ -248,7 +250,7 @@ label.gfield_label[for=input_1_3_3],label.gfield_label[for=input_1_2] {
 // ------------------------ 
 
 .gf_page_steps {
-  width: 100%;
+  width: 96%;
   max-width: 1240px;
 }
 

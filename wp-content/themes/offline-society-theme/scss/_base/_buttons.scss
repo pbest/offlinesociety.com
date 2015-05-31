@@ -4,7 +4,8 @@
 button,
 input[type="submit"],
 input[type="reset"],
-input[type="button"] {
+input[type="button"],
+.gform_save_link {
   @include transition(all, 0.2s, ease-in-out);
   @include type__default;
   display: inline-block;
@@ -52,6 +53,13 @@ input[type="button"].btn-primary {
   color: $white;
   background-color: $red;
   border-color: $red;
+}
+
+.gform_next_button {
+  color: $white !important;
+  background-color: $red !important;
+  border-color: $red !important; 
+  margin-right: 20px;
 }
 
 .btn.btn-primary:hover,

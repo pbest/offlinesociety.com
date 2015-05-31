@@ -27,7 +27,9 @@
 
 						<!-- Main Menu
     				–––––––––––––––––––––––––––––––––––––––––––––––––– -->	
+						
 						<ul class="nav">
+						{% block nav %} 
 						{% for item in menu.get_items %}
 							<li class="nav-item {{item.classes | join(' ')}}">
 								<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
@@ -42,6 +44,7 @@
 								{% endif %}
 							</li>
 						{% endfor %}
+						{% endblock %}	
 
 						<!-- Right-side Menu (CTA)
     				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -60,7 +63,7 @@
 							  		<li class="usr__dropdownItem"><a href="{{logout_url}}">Logout</a>
 							  	</ul>
 								</li>
-								<li class="cta"><a class="btn btn-primary btn-join tooltop tooltip--bottom" data-tooltip="You haven't completed your Offline Society Membership Application!" href="{{site.url}}/join/">Join US</a></li>
+								<li class="cta"><a class="btn btn-primary btn-join tooltop tooltip--bottom" data-tooltip="Complete your Membership Application!" href="{{site.url}}/join/">Join US</a></li>
 							{% elseif user and (user_role == "member" or user_role == "administrator") %}	
 							{# User / Member : we're like totally Facebook official #}
               	<li class="cta usr">
@@ -79,7 +82,7 @@
 							{% else %}
 							{# Non-User : you mean nothing to me! #}
 								<li class="cta"><a class="btn btn-primary btn-join" href="{{site.url}}/join/">Join US</a></li>
-								<li class="cta"><a class="btn btn-secondary btn-signin" href="{{site.url}}/login/">Sign In</a></li>
+								<li class="cta"><a class="btn btn-secondary btn-signin" href="{{site.url}}/signin/">Sign In</a></li>
 							{% endif %}
 						{% endblock %}	
 
